@@ -1,42 +1,33 @@
-# ---- Stage 1: Build ----
+# Etapa de build
 FROM node:20-alpine AS builder
 
-# Instalar pnpm globalmente
-RUN corepack enable && corepack prepare pnpm@latest --activate
-
-# Criar diretório da aplicação
 WORKDIR /app
 
-# Copiar arquivos de configuração primeiro (para melhor cache das dependências)
-COPY package.json pnpm-lock.yaml* ./
+# Copia apenas o essencial primeiro (cache de dependências)
+COPY package*.json ./
+RUN npm i
 
-# Instalar dependências
-RUN pnpm install --frozen-lockfile
-
-# Copiar restante do código
+# Copia o restante do código e faz build
 COPY . .
+RUN npm run build
 
-# Gerar build de produção
-RUN pnpm build
-
-
-# ---- Stage 2: Run ----
+# Etapa de execução
 FROM node:20-alpine AS runner
-
 WORKDIR /app
 
-# Definir variáveis de ambiente padrão
 ENV NODE_ENV=production
-ENV PORT=3000
+ENV PORT=8080
 
-# Copiar apenas o necessário do builder
-COPY --from=builder /app/package.json ./package.json
+# Copia arquivos necessários do build
+COPY --from=builder /app/package*.json ./
 COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/next.config.mjs ./next.config.mjs
 
-# Expor a porta
-EXPOSE 80
+# Cloud Run espera que o serviço escute nessa porta
+EXPOSE 8080
 
-# Comando para rodar a aplicação
-CMD ["pnpm", "start"]
+# Inicia o Next na porta 8080
+CMD ["npm", "run", "start", "--", "-p", "8080"]
+
