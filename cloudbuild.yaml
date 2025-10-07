@@ -1,0 +1,41 @@
+steps:
+  # 1️⃣ Build da imagem Docker
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      [
+        'build',
+        '-t',
+        'europe-west1-docker.pkg.dev/monticelli-473011/cloud-run-source-deploy/portalvendas/portalvendas:$SHORT_SHA',
+        '.'
+      ]
+
+  # 2️⃣ Push da imagem para o Artifact Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      [
+        'push',
+        'europe-west1-docker.pkg.dev/monticelli-473011/cloud-run-source-deploy/portalvendas/portalvendas:$SHORT_SHA'
+      ]
+
+  # 3️⃣ Deploy no Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+      [
+        'run',
+        'services',
+        'update',
+        'portalvendas',
+        '--platform=managed',
+        '--image=europe-west1-docker.pkg.dev/monticelli-473011/cloud-run-source-deploy/portalvendas/portalvendas:$SHORT_SHA',
+        '--region=europe-west1',
+        '--quiet',
+        '--labels=managed-by=gcp-cloud-build-deploy-cloud-run,commit-sha=$SHORT_SHA'
+      ]
+
+images:
+  - 'europe-west1-docker.pkg.dev/monticelli-473011/cloud-run-source-deploy/portalvendas/portalvendas:$SHORT_SHA'
+
+options:
+  logging: CLOUD_LOGGING_ONLY
+
