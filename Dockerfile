@@ -36,7 +36,7 @@ COPY --from=builder /app/public ./public
 COPY --from=builder /app/node_modules ./node_modules
 
 # Expor a porta
-EXPOSE 3000
+EXPOSE 80
 
 # Comando para rodar a aplicação
 CMD ["pnpm", "start"]
