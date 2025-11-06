@@ -75,7 +75,7 @@ export function ComparisonSection() {
   ]
 
   return (
-    <section className="py-10">
+    <section id="cobertura" className="py-10">
       <div className="container mx-auto px-4">
         <div className="text-center space-y-4 mb-16">
           <h2 className="text-3xl lg:text-4xl font-bold text-balance">Compare nossos planos</h2>
