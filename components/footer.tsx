@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { CONTACT_MESSAGE, WPP_NUMBER } from "@/contants/whatsapp"
 import BenemedLogoColorido from "@/public/logo-benemed-colorido.svg"
-import { ArrowUpRight, Facebook, Instagram, Youtube } from "lucide-react"
+import { ArrowUpRight, Linkedin } from "lucide-react"
 import Image from "next/image"
 import { WhatsAppFloat } from "./whatsapp"
 
@@ -17,7 +17,7 @@ export function Footer() {
             {/* Brand */}
             <div className="space-y-4">
               <Image src={BenemedLogoColorido} alt="Logo Benemed" className="w-36" />
-              <p classioName="text-sm text-muted-foreground leading-relaxed">
+              <p className="text-sm text-muted-foreground leading-relaxed">
                 Cuidando da sua saúde com atendimento humano e transparente.
               </p>
             </div>
@@ -28,7 +28,7 @@ export function Footer() {
               <ul className="space-y-2 text-sm">
                 <li><a href="#planos" className="hover:text-primary transition">Planos</a></li>
                 <li><a href="#cobertura" className="hover:text-primary transition">Cobertura</a></li>
-                <li><a href={`https://wa.me/${WPP_NUMBER}?text=${encodeURIComponent(CONTACT_MESSAGE)}`} target="_blank" className="hover:text-primary transition">Contato</a></li>
+                <li><a href={`https://wa.me/${WPP_NUMBER}?text=${encodeURIComponent(CONTACT_MESSAGE)}`} target="_blank" className="hover:text-primary flex transition">Contato <ArrowUpRight size={12}/></a></li>
               </ul>
             </div>
 
@@ -53,16 +53,14 @@ export function Footer() {
             <div>
               <h4 className="font-semibold mb-3">Redes Sociais</h4>
               <div className="flex gap-4">
-                <a href="#" className="hover:text-primary transition"><Instagram size={20} /></a>
-                <a href="#" className="hover:text-primary transition"><Facebook size={20} /></a>
-                <a href="#" className="hover:text-primary transition"><Youtube size={22} /></a>
+                <a href="https://www.linkedin.com/company/benemedbr/" target="_blank" className="hover:text-primary transition"><Linkedin size={22} /></a>
               </div>
             </div>
 
           </div>
 
           {/* Bottom */}
-          <div className="flex flex-col md:flex-row justify-between items-center pt-6 text-sm text-muted-foreground">
+          <div className="flex flex-col md:flex-row justify-center items-center pt-6 text-sm text-muted-foreground">
             <span>© {new Date().getFullYear()} Benemed Saúde — Todos os direitos reservados.</span>
           </div>
         </div>

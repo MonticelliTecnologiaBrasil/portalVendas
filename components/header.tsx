@@ -1,6 +1,5 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { CONTACT_MESSAGE, WPP_NUMBER } from "@/contants/whatsapp";
 import BenemedLogoColorido from "@/public/logo-benemed-colorido.svg";
 import { ArrowUpRight } from "lucide-react";
@@ -25,11 +24,11 @@ export function Header() {
 
   return (
     <>
-      <div className="bg-primary text-primary-foreground p-3 text-center text-sm">
+      <div className="bg-primary text-primary-foreground p-4 text-center text-sm">
         <span className="font-medium">Solicite um atendimento personalizado </span>
-        <Button variant="secondary" size="sm" className="text-primary-foreground font-medium">
+        <a href={`https://wa.me/${WPP_NUMBER}?text=${encodeURIComponent(CONTACT_MESSAGE)}`} className="text-primary-foreground font-medium bg-secondary py-2 px-4 shadow rounded-lg hover:bg-white hover:text-blue-300 cursor-pointer" target="_blank">
           Saiba mais
-        </Button>
+        </a>
       </div>
 
       <header className={`border-b bg-card transition-all duration-300 ${isFixed ? "fixed top-0 left-0 right-0 shadow-md z-50" : ""}`}>
