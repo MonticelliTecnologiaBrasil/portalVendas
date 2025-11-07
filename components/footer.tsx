@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { CONTACT_MESSAGE, WPP_NUMBER } from "@/contants/whatsapp"
 import BenemedLogoColorido from "@/public/logo-benemed-colorido.svg"
-import { ArrowUpRight, Linkedin } from "lucide-react"
+import { ArrowUpRight, Instagram, Linkedin } from "lucide-react"
 import Image from "next/image"
 import { WhatsAppFloat } from "./whatsapp"
 
@@ -54,6 +54,7 @@ export function Footer() {
               <h4 className="font-semibold mb-3">Redes Sociais</h4>
               <div className="flex gap-4">
                 <a href="https://www.linkedin.com/company/benemedbr/" target="_blank" className="hover:text-primary transition"><Linkedin size={22} /></a>
+                <a href="https://www.instagram.com/_benemed?igsh=MXI5em5ieGhxbjY5eg==" target="_blank" className="hover:text-primary transition"><Instagram size={22} /></a>
               </div>
             </div>
 
