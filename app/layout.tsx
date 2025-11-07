@@ -6,9 +6,8 @@ import { Suspense } from "react"
 import "./globals.css"
 
 export const metadata: Metadata = {
-  title: "VitalCare - Planos de Saúde",
+  title: "Contratação Benemed.",
   description: "Encontre o plano de saúde ideal para você e sua família. Compare preços, coberturas e contrate online.",
-  generator: "v0.app",
 }
 
 export default function RootLayout({

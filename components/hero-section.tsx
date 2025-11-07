@@ -1,6 +1,5 @@
 import HappyFamily from '@/public/familia-feliz.png'
 import Image from "next/image"
-import { Button } from './ui/button'
 
 export function HeroSection() {
   return (
@@ -34,9 +33,9 @@ export function HeroSection() {
               {/* <span className="relative z-10">Fazer Cotação Gratuita</span> */}
               {/* </Button> */}
 
-              <Button size="lg" className="text-lg px-8 py-6 relative overflow-hidden group">
+              <a className="text-lg px-8 py-3 relative overflow-hidden bg-primary text-white rounded-lg cursor-pointer" href='#planos'>
                 Consulte nossos planos
-              </Button>
+              </a>
             </div>
 
             {/* <div className="flex flex-wrap items-center gap-6 pt-4">

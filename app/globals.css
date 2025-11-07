@@ -139,3 +139,11 @@
 .animate-float {
   animation: float 15s ease-in-out infinite -z-10;
 }
+
+.mp-blue-button {
+  @apply border-8 text-red-600;
+}
+
+.mp-blue-button:hover {
+  background-color: #2a68c8;
+}

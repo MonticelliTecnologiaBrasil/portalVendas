@@ -1,7 +1,7 @@
 import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Check, X } from "lucide-react"
+import MercadoPagoButton from "./checkout-button"
 
 export function ComparisonSection() {
   const comparisonData = [
@@ -57,20 +57,23 @@ export function ComparisonSection() {
 
   const plans = [
     {
-      name: "Básico",
+      name: "Essencial",
       price: "R$ 149,90",
       color: "border-gray-300",
+      plan_id: "e6b561a133be433bb6450ae64b572bd6"
     },
     {
-      name: "Premium",
+      name: "Protege",
       price: "R$ 456,90",
       color: "border-primary",
       popular: true,
+      plan_id: "8c903ac8624147b9b25ee033102b6f56"
     },
     {
-      name: "Master",
+      name: "Premium",
       price: "R$ 567,90",
       color: "border-yellow-500",
+      plan_id: "076d7b9365bb46eb9f12871ecbd0b506"
     },
   ]
 
@@ -153,9 +156,7 @@ export function ComparisonSection() {
                   <td className="p-6"></td>
                   {plans.map((plan, index) => (
                     <td key={index} className="p-6 text-center">
-                      <Button className="w-full">
-                        Contratar
-                      </Button>
+                      <MercadoPagoButton plan_id={plan.plan_id} />
                     </td>
                   ))}
                 </tr>
