@@ -1,6 +1,6 @@
 "use client";
 
-import { CONTACT_MESSAGE, WPP_NUMBER } from "@/contants/whatsapp";
+import { CONTACT_MESSAGE, KNOW_MORE, WPP_NUMBER } from "@/contants/whatsapp";
 import BenemedLogoColorido from "@/public/logo-benemed-colorido.svg";
 import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
@@ -26,7 +26,7 @@ export function Header() {
     <>
       <div className="bg-primary text-primary-foreground p-4 text-center text-sm">
         <span className="font-medium">Solicite um atendimento personalizado </span>
-        <a href={`https://wa.me/${WPP_NUMBER}?text=${encodeURIComponent(CONTACT_MESSAGE)}`} className="text-primary-foreground font-medium bg-secondary py-2 px-4 shadow rounded-lg hover:bg-white hover:text-blue-300 cursor-pointer" target="_blank">
+        <a href={`https://wa.me/${WPP_NUMBER}?text=${encodeURIComponent(KNOW_MORE)}`} className="text-primary-foreground font-medium bg-secondary py-2 px-4 shadow rounded-lg hover:bg-white hover:text-blue-300 cursor-pointer" target="_blank">
           Saiba mais
         </a>
       </div>
