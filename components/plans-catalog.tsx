@@ -298,7 +298,6 @@ function PlanCard({ plan }: { plan: Plan }) {
         <div className="grid gap-4 grid-cols-1">
           <div className="w-full flex flex-col gap-4 justify-center">
             {plan.plan_id && (
-
               <MercadoPagoButton plan_id={plan.plan_id} />
             )}
             <Dialog>

@@ -1,7 +1,6 @@
 import { Badge } from "@/components/ui/badge"
 import { Card } from "@/components/ui/card"
 import { Check, X } from "lucide-react"
-import MercadoPagoButton from "./checkout-button"
 
 export function ComparisonSection() {
   const comparisonData = [
@@ -156,7 +155,7 @@ export function ComparisonSection() {
                   <td className="p-6"></td>
                   {plans.map((plan, index) => (
                     <td key={index} className="p-6 text-center">
-                      <MercadoPagoButton plan_id={plan.plan_id} />
+                      {/* <MercadoPagoButton plan_id={plan.plan_id} /> */}
                     </td>
                   ))}
                 </tr>
