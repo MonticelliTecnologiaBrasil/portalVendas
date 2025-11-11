@@ -39,12 +39,12 @@ export function StepBank({ data, onChange }: StepBankProps) {
   }
 
   return (
-    <FormGrid>
+    <FormGrid columns={2}>
       <Select
         value={String(data.bancoId || "")}
         onValueChange={handleBancoChange}
       >
-        <SelectTrigger>
+        <SelectTrigger className="w-full">
           <SelectValue placeholder="Selecione um banco" />
         </SelectTrigger>
         <SelectContent>

@@ -1,4 +1,5 @@
-import { ComparisonSection } from "@/components/comparison-section"
+import { CTASection } from "@/components/cta-section"
+import { FAQSection } from "@/components/faq-section"
 import { Footer } from "@/components/footer"
 import { Header } from "@/components/header"
 import { HeroSection } from "@/components/hero-section"
@@ -13,8 +14,10 @@ export default function HomePage() {
       {/* <FeaturesSection /> */}
       {/* <FiltersSection /> */}
       <PlansCatalog />
-      <ComparisonSection />
+      <CTASection />
+      {/* <ComparisonSection /> */}
       {/* <NewsletterSignup /> */}
+      <FAQSection />
       <Footer />
     </main>
   )

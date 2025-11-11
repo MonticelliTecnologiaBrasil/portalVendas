@@ -40,7 +40,7 @@ export function Header() {
 
             <nav className="hidden md:flex justify-center items-center gap-8">
               <a href="#planos" className="text-foreground hover:text-primary transition-colors">Planos</a>
-              <a href="#cobertura" className="text-foreground hover:text-primary transition-colors">Cobertura</a>
+              <a href="#faq" className="text-foreground hover:text-primary transition-colors">F.A.Q.</a>
               <a href={`https://wa.me/${WPP_NUMBER}?text=${encodeURIComponent(CONTACT_MESSAGE)}`} target="_blank" className="text-foreground hover:text-primary transition-colors flex">Contato <ArrowUpRight className="opacity-50" size={12}/></a>
             </nav>
 

@@ -9,7 +9,7 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, Di
 interface Plan {
   id: string
   name: string
-  operator: string
+  operator?: string
   type: "Individual" | "Familiar" | "Empresarial"
   price: number
   originalPrice?: number
@@ -20,144 +20,123 @@ interface Plan {
   popular?: boolean
   bestValue?: boolean
   plan_id?: string
+  warning?: string[]
 }
 
 export const plans = [
   {
     id: "1",
     name: "Essencial",
-    operator: "Unimed",
     type: "Individual",
-    price: 189.9,
-    originalPrice: 249.9,
-    coverage: [
-      "Consultas médicas ilimitadas",
-      "Exames laboratoriais",
-      "Internações",
-      "Cirurgias",
-      "Emergência 24h",
-      "Cobertura nacional",
+    price: 64.9,
+    highlights: [
+      "Orientação Saúde + Telemedicina",
+      "Descontos em medicamentos",
+      "Descontos em consultas e exames",
+      "Assistência Residencial",
+      "Acidentes Pessoais R$ 10 mil",
+      "Assistência funeral R$ 5 mil",
     ],
-    highlights: ["Sem carência para emergência", "Rede credenciada ampla"],
-    rating: 4.8,
-    network: "15.000+ credenciados",
-    popular: true,
     plan_id: "e6b561a133be433bb6450ae64b572bd6"
   },
   {
     id: "2",
     name: "Protege",
-    operator: "SulAmérica",
     type: "Individual",
-    price: 298.9,
-    coverage: [
-      "Consultas ilimitadas",
-      "Exames laboratoriais e imagem",
-      "Internações",
-      "Cirurgias",
-      "Emergência 24h",
-      "Telemedicina",
+    price: 84.9,
+    popular: true,
+    highlights: [
+      "Orientação Saúde + Telemedicina",
+      "Descontos em medicamentos",
+      "Descontos em consultas e exames",
+      "Assistência Residencial",
+      "Assistência PET",
+      "Acidentes Pessoais R$ 10 mil",
+      "Assistência funeral R$ 5 mil",
     ],
-    highlights: ["Telemedicina 24h", "Desconto em farmácias"],
-    rating: 4.7,
-    network: "18.000+ credenciados",
     plan_id: "8c903ac8624147b9b25ee033102b6f56"
   },
   {
     id: "3",
     name: "Premium",
-    operator: "Hapvida",
     type: "Individual",
-    price: 149.9,
-    coverage: [
-      "Consultas médicas",
-      "Exames básicos",
-      "Internações",
-      "Emergência 24h",
-      "Cobertura regional",
+    price: 120.0,
+    highlights: [
+      "Orientação Saúde + Telemedicina",
+      "Descontos em medicamentos",
+      "Descontos em consultas e exames",
+      "Assistência Residencial",
+      "Assistência PET",
+      "Check-up completo",
+      "Acidentes Pessoais R$ 10 mil",
+      "Assistência funeral R$ 5 mil",
     ],
-    highlights: ["Preço acessível", "Ideal para jovens"],
-    rating: 4.4,
-    network: "8.000+ credenciados",
     plan_id: "076d7b9365bb46eb9f12871ecbd0b506"
-  },
-  {
+  }, {
     id: "4",
-    name: "Premium Care",
-    operator: "Bradesco Saúde",
+    name: "Essencial",
     type: "Familiar",
-    price: 456.9,
-    originalPrice: 589.9,
-    coverage: [
-      "Consultas ilimitadas",
-      "Exames alta complexidade",
-      "Internações em apartamento",
-      "Cirurgias",
-      "Cobertura internacional",
+    price: 104.9,
+    highlights: [
+      "Orientação Saúde + Telemedicina",
+      "Descontos em medicamentos",
+      "Descontos em consultas e exames",
+      "Assistências Residencial*",
+      "Acidentes Pessoais R$ 10 mil**",
+      "Assistência funeral R$ 5 mil**"
     ],
-    highlights: ["Cobertura para até 4 pessoas", "Check-up anual gratuito"],
+    warning: [
+      "* Assistência Residencial: Disponível para o titular.",
+      "** Seguro Acidentes Pessoais e Assistência Funeral: Disponível para o Titular/Segurado."
+    ],
     rating: 4.9,
-    network: "22.000+ credenciados",
-    bestValue: true,
   },
   {
     id: "5",
-    name: "Master Health",
-    operator: "Porto Seguro",
+    name: "Protege",
     type: "Familiar",
-    price: 567.9,
-    coverage: [
-      "Consultas",
-      "Exames avançados",
-      "Internações premium",
-      "Emergência 24h",
-      "Odontologia completa",
+    popular: true,
+    price: 131.9,
+    highlights: [
+      "Orientação Saúde + Telemedicina",
+      "Descontos em medicamentos",
+      "Descontos em consultas e exames",
+      "Assistência Residencial *",
+      "Assistência PET *",
+      "Acidentes Pessoais R$ 10 mil**",
+      "Assistência funeral R$ 5 mil**",
     ],
-    highlights: ["Inclui plano odontológico", "Cobertura mundial"],
-    rating: 4.9,
-    network: "25.000+ credenciados",
-  },
-  {
-    id: "6",
-    name: "Vida Plena",
-    operator: "Amil",
-    type: "Individual",
-    price: 234.9,
-    originalPrice: 289.9,
-    coverage: [
-      "Consultas ilimitadas",
-      "Terapias (fisioterapia/psicologia)",
-      "Internações",
-      "Emergência 24h",
+    warning: [
+      "* Assistência Pet: Disponível para o o PET do Titular/Segurado. Válido para cães e gatos com idade até 8 anos.  Um pet por CPF. Assistência Residencial: Disponível para o titular.",
+      "** Seguro Acidentes Pessoais e Assistência Funeral: Disponível para o Titular/Segurado."
     ],
-    highlights: ["Cobertura terapêutica", "Programa de bem-estar"],
-    rating: 4.6,
-    network: "12.000+ credenciados",
   },
   {
     id: "7",
-    name: "Master Blaster Health",
-    operator: "Porto Seguro",
+    name: "Premium",
     type: "Familiar",
-    price: 567.9,
-    coverage: [
-      "Imortalidade",
-      "Consultas",
-      "Exames avançados",
-      "Internações premium",
-      "Emergência 24h",
-      "Odontologia completa",
+    price: 215.0,
+    highlights: [
+      "Orientação Saúde + Telemedicina",
+      "Descontos em medicamentos",
+      "Descontos em consultas e exames",
+      "Assistência Residencial *",
+      "Assistência PET *",
+      "Check-up completo",
+      "Acidentes Pessoais R$ 10 mil **",
+      "Assistência funeral R$ 5 mil **",
     ],
-    highlights: ["Inclui plano odontológico", "Cobertura mundial"],
-    rating: 4.9,
-    network: "25.000+ credenciados",
-  }, ,
+    warning: [
+      "* Assistência Pet: Disponível para o o PET do Titular/Segurado. Válido para cães e gatos com idade até 8 anos.  Um pet por CPF. Assistência Residencial: Disponível para o titular.",
+      "** Seguro Acidentes Pessoais e Assistência Funeral: Disponível para o Titular/Segurado."
+    ],
+  },
 ]
 
 
 export function PlansCatalog() {
-  const individualPlans = plans.filter((p: any) => p.type === "Individual").slice(0, 3)
-  const familiarPlans = plans.filter((p: any) => p.type === "Familiar").slice(0, 3)
+  const individualPlans = plans.filter((p: any) => p.type === "Individual")
+  const familiarPlans = plans.filter((p: any) => p.type === "Familiar")
 
   return (
     <section id="planos" className="py-20 bg-muted/20 relative overflow-hidden">
@@ -190,6 +169,9 @@ export function PlansCatalog() {
           </TabsContent>
 
           <TabsContent value="familiar">
+            <div className="w-full grid place-items-center pb-8">
+              <span className="text-center font-bold text-slate-500">(CPF do titular + 3 dependentes sem comprovação de vínculo familiar)</span>
+            </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {familiarPlans.map((plan: any) => (
                 <PlanCard key={plan.id} plan={plan} />
@@ -226,24 +208,25 @@ function PlanCard({ plan }: { plan: Plan }) {
 
       <div className="flex flex-col h-full justify-between gap-8">
         <div className="flex flex-col gap-4 items-center justify-around">
-          <div className="space-y-2">
-            <div className="flex items-center justify-between">
-              <h3 className="text-xl font-bold">{plan.name}</h3>
-              <div className="flex items-center gap-1">
-                <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                <span className="text-sm font-medium">{plan.rating}</span>
-              </div>
+          <div className="space-y-2 flex justify-center flex-col items-center">
+            <div className="flex">
+              <h3 className="text-xl text-center font-bold">{plan.name}</h3>
             </div>
 
-            <p className="text-muted-foreground font-medium">{plan.operator}</p>
+            {plan.operator && (
+              <p className="text-muted-foreground font-medium">{plan.operator}</p>
+            )}
 
-            <Badge variant="outline" className="text-xs">{plan.type}</Badge>
+            <Badge variant="outline" className="">{plan.type}</Badge>
           </div>
 
           <div className="space-y-2">
-            <div className="flex items-baseline gap-2">
+            <div className="flex items-baseline justify-center gap-2">
               <span className="text-3xl font-bold text-primary">
-                R$ {plan.price.toFixed(2).replace(".", ",")}
+                {plan.price.toLocaleString('pt-BR', {
+                  style: "currency",
+                  currency: "BRL"
+                })}
               </span>
               <span className="text-muted-foreground">/mês</span>
             </div>
@@ -251,7 +234,10 @@ function PlanCard({ plan }: { plan: Plan }) {
             {plan.originalPrice && (
               <div className="flex items-center gap-2">
                 <span className="text-sm text-muted-foreground line-through">
-                  R$ {plan.originalPrice.toFixed(2).replace(".", ",")}
+                  {plan.originalPrice.toLocaleString('pt-BR', {
+                    style: "currency",
+                    currency: "BRL"
+                  })}
                 </span>
                 <Badge variant="destructive" className="text-xs">
                   -{Math.round(((plan.originalPrice - plan.price) / plan.originalPrice) * 100)}%
@@ -260,14 +246,9 @@ function PlanCard({ plan }: { plan: Plan }) {
             )}
 
           </div>
-
-          <div className="space-y-3">
-            <div className="flex items-center gap-2 text-sm text-muted-foreground">
-              <MapPin className="h-4 w-4" />
-              <span>{plan.network}</span>
-            </div>
-
+          <div className="space-y-3 w-full px-8">
             <div className="space-y-2">
+              <h4 className="font-semibold text-sm text-primary">Assistências:</h4>
               {plan.highlights.map((highlight, index) => (
                 <div key={index} className="flex items-center gap-2 text-sm">
                   <Heart className="h-4 w-4 text-primary" />
@@ -277,22 +258,18 @@ function PlanCard({ plan }: { plan: Plan }) {
             </div>
           </div>
 
-          <div className="space-y-2">
-            <h4 className="font-semibold text-sm">Cobertura inclusa:</h4>
-            <div className="space-y-1">
-              {plan.coverage.slice(0, 4).map((item, index) => (
-                <div key={index} className="flex items-center gap-2 text-sm">
-                  <Check className="h-4 w-4 text-green-600" />
-                  <span>{item}</span>
-                </div>
-              ))}
-              {plan.coverage.length > 4 && (
-                <div className="text-sm text-muted-foreground">
-                  +{plan.coverage.length - 4} benefícios adicionais
-                </div>
-              )}
+          {plan.warning && (
+            <div className="space-y-1 w-full px-8">
+              <h4 className="font-semibold text-sm">Observações:</h4>
+              <div className="space-y-1">
+                {plan.warning.map((item, index) => (
+                  <div key={index} className="flex items-center gap-2 text-sm">
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
+          )}
         </div>
 
         <div className="grid gap-4 grid-cols-1">
@@ -362,7 +339,7 @@ function PlanCard({ plan }: { plan: Plan }) {
                   <section>
                     <h3 className="text-lg font-semibold mb-3">Cobertura Completa</h3>
                     <div className="grid sm:grid-cols-2 gap-y-2 gap-x-4">
-                      {plan.coverage.map((item, i) => (
+                      {plan.coverage && plan.coverage.map((item, i) => (
                         <div key={i} className="flex items-start gap-2 text-sm leading-tight">
                           <Check className="h-4 w-4 text-green-600" />
                           {item}

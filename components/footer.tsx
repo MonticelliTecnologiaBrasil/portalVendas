@@ -3,16 +3,17 @@ import { CONTACT_MESSAGE, WPP_NUMBER } from "@/contants/whatsapp"
 import BenemedLogoColorido from "@/public/logo-benemed-colorido.svg"
 import { ArrowUpRight, Instagram, Linkedin } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
 import { WhatsAppFloat } from "./whatsapp"
 
 export function Footer() {
   return (
     <>
-      <footer className="bg-card border-t pt-14 pb-10 mt-20">
+      <footer className="bg-card border-t pt-14 pb-10">
         <div className="container mx-auto px-4">
           
           {/* Top Section */}
-          <div className="grid md:grid-cols-4 gap-10 pb-14 border-b">
+          <div className="grid md:grid-cols-5 gap-10 pb-14 border-b">
             
             {/* Brand */}
             <div className="space-y-4">
@@ -27,8 +28,17 @@ export function Footer() {
               <h4 className="font-semibold mb-3">Menu</h4>
               <ul className="space-y-2 text-sm">
                 <li><a href="#planos" className="hover:text-primary transition">Planos</a></li>
-                <li><a href="#cobertura" className="hover:text-primary transition">Cobertura</a></li>
+                <li><a href="#faq" className="hover:text-primary transition">F.A.Q.</a></li>
                 <li><a href={`https://wa.me/${WPP_NUMBER}?text=${encodeURIComponent(CONTACT_MESSAGE)}`} target="_blank" className="hover:text-primary flex transition">Contato <ArrowUpRight size={12}/></a></li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="font-semibold mb-3">Condições Gerais</h4>
+              <ul className="space-y-2 text-sm">
+                <li><Link href="/pdfs/Condicoes_Gerais_Assistencia_Pet.pdf" target="_blank" className="hover:text-primary transition">Assistência PET</Link></li>
+                <li><Link href="/pdfs/Condicoes_Gerais_Assistencia_Residencial.pdf" target="_blank" className="hover:text-primary transition">Assistência Residencial</Link></li>
+                <li><Link href="/pdfs/Condicoes_Gerais_APC.pdf" target="_blank" className="hover:text-primary transition">Acidentes Pessoais e Funeral</Link></li>
               </ul>
             </div>
 

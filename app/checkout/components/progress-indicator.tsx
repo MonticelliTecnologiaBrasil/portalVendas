@@ -23,7 +23,7 @@ export function ProgressIndicator({ steps, currentStep }: ProgressIndicatorProps
                   ? "bg-primary text-white shadow-lg shadow-primary/30"
                   : currentStep === s.id
                     ? "bg-white text-purple-600 ring-2 ring-primary shadow-lg"
-                    : "bg-slate-200 text-slate-500 dark:bg-slate-700 dark:text-slate-400"
+                    : "bg-purple-200 text-purple-500 dark:bg-purple-700 dark:text-purple-400"
               }`}
             >
               {currentStep > s.id ? <Check className="w-5 h-5" /> : <span className="text-base">{s.icon}</span>}
@@ -31,7 +31,7 @@ export function ProgressIndicator({ steps, currentStep }: ProgressIndicatorProps
             {index < steps.length - 1 && (
               <div
                 className={`flex-1 h-1 mx-2 rounded-full transition-all duration-500 ${
-                  currentStep > s.id ? "bg-primary" : "bg-slate-200 dark:bg-slate-700"
+                  currentStep > s.id ? "bg-primary" : "bg-purple-200 dark:bg-purple-700"
                 }`}
               />
             )}
@@ -48,7 +48,7 @@ export function ProgressIndicator({ steps, currentStep }: ProgressIndicatorProps
                 ? "text-purple-600 dark:text-purple-400 font-semibold"
                 : currentStep > s.id
                   ? "text-purple-600 dark:text-purple-400"
-                  : "text-slate-500 dark:text-slate-400"
+                  : "text-purple-500 dark:text-purple-400"
             }`}
           >
             {s.label}

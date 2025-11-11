@@ -95,7 +95,7 @@ export function CheckoutContainer({ onPayment }: CheckoutContainerProps) {
     <div className="w-full max-w-2xl">
       <ProgressIndicator steps={STEPS} currentStep={step} />
 
-      <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl dark:shadow-2xl overflow-hidden backdrop-blur-sm">
+      <div className="bg-white dark:bg-purple-800 rounded-2xl shadow-xl dark:shadow-2xl overflow-hidden backdrop-blur-sm">
         <Header title={STEPS[step - 1].label} step={step} totalSteps={STEPS.length} />
 
         <div className="px-8 md:px-10 pb-8 md:pb-10">
@@ -110,7 +110,7 @@ export function CheckoutContainer({ onPayment }: CheckoutContainerProps) {
         <FooterActions step={step} totalSteps={STEPS.length} onPrev={prevStep} onNext={nextStep} />
       </div>
 
-      <div className="text-center mt-6 text-sm text-slate-500 dark:text-slate-400">
+      <div className="text-center mt-6 text-sm text-purple-500 dark:text-purple-400">
         Etapa {step} de {STEPS.length}
       </div>
     </div>
