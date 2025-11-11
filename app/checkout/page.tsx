@@ -54,9 +54,7 @@ export default function CheckoutPage() {
         },
       };
 
-      console.log(payload)
-
-      const response = await fetch("http://localhost:3001/api/contratos/criar", {
+      const response = await fetch("https://portalparceiro.holdingffh.com.br/api/contratos/criar", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
