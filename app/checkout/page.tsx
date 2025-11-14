@@ -1,83 +1,30 @@
-"use client"
+'use client'
 
-import { useEffect, useState } from "react"
-import { CheckoutContainer } from "./components/checkout-container"
+import { CheckoutFormMultiStep } from "@/components/checkout-form-multi-step"
+import { Header } from "@/components/header"
 
-export default function CheckoutPage() {
-  const [mounted, setMounted] = useState(false)
+interface CheckoutPageProps {
+  searchParams: Promise<{
+    planId?: string
+    type?: string
+  }>
+}
 
-  useEffect(() => {
-    setMounted(true)
-
-    if (typeof window !== "undefined" && !(window as any).$MPC_loaded) {
-      const script = document.createElement("script")
-      script.src = `${window.location.protocol}//secure.mlstatic.com/mptools/render.js`
-      script.async = true
-      document.body.appendChild(script)
-        ; (window as any).$MPC_loaded = true
-    }
-  }, [])
-
-  const handlePayment = async (formData: any) => {
-    const [ano, mes, dia] = formData.dataNascimento.split("-");
-    const dataNascimento = `${dia}/${mes}/${ano}`;
-    try {
-      const payload = {
-        cliente: {
-          cpf: formData.cpf,
-          dataNascimento: String(dataNascimento),
-          nome: formData.nome,
-          bancoId: Number(formData.bancoId),
-          agencia: formData.agencia,
-          conta: formData.conta,
-          digito: formData.digito,
-        },
-        parceiro: {
-          codigoParceiro: Number(formData.codigoParceiro),
-        },
-        endereco: {
-          endereco: formData.endereco,
-          complemento: formData.complemento,
-          bairro: formData.bairro,
-          uf: formData.uf,
-          cep: formData.cep,
-          cidade: formData.cidade,
-        },
-        produto: {
-          valor: Number(formData.valor),
-          produtoContratado: Number(formData.produtoContratado),
-          diaVencimento: Number(formData.diaVencimento),
-        },
-        contato: {
-          telefone: formData.telefone,
-          email: formData.email,
-        },
-      };
-
-      const response = await fetch("https://portalparceiro.holdingffh.com.br/api/contratos/criar", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify(payload),
-      });
-
-      const result = await response.json();
-
-      if (!response.ok) throw new Error(result.message || "Erro ao criar contrato");
-
-      console.log("Contrato criado com sucesso:", result);
-      alert("Contrato criado com sucesso!");
-    } catch (error: any) {
-      console.error(error);
-      alert("Falha ao criar contrato");
-    }
-  };
+export default async function CheckoutPage({ searchParams }: CheckoutPageProps) {
+  const params = await searchParams
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-950 dark:to-purple-900 p-4 flex items-center justify-center">
-      <CheckoutContainer onPayment={handlePayment} />
-    </div>
+    <main className="min-h-screen bg-gradient-to-br from-primary/5 via-background to-accent/5">
+      <Header />
+      <div className="container mx-auto px-4 py-12">
+        <div className="text-center space-y-4 mb-12">
+          <h1 className="text-3xl lg:text-4xl font-bold text-balance">Finalize sua contratação</h1>
+          <p className="text-lg text-muted-foreground text-pretty max-w-2xl mx-auto">
+            Preencha seus dados e escolha a forma de pagamento
+          </p>
+        </div>
+        <CheckoutFormMultiStep initialPlanId={params.planId} initialType={params.type} />
+      </div>
+    </main>
   )
 }

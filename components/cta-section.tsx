@@ -227,7 +227,9 @@ function PlanCard({ plan }: { plan: PlanCard }) {
             </div>
           </div>
         )}
-        <MercadoPagoButton />
+        {plan.plan_id && (
+          <MercadoPagoButton plan_id={plan.plan_id} type={plan.type} />
+        )}
       </div>
     </Card>
   )

@@ -4,8 +4,9 @@ import * as Dialog from "@radix-ui/react-dialog";
 import { ArrowUpRight, X } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { Button } from "./ui/button";
 
-export default function MercadoPagoButton({ plan_id }: { plan_id?: string }) {
+export default function MercadoPagoButton({ plan_id, type }: { plan_id: string, type: string }) {
   const [accepted, setAccepted] = useState(false);
 
   useEffect(() => {
@@ -21,7 +22,7 @@ export default function MercadoPagoButton({ plan_id }: { plan_id?: string }) {
   const handleCheckout = () => {
     if (!accepted) return;
     window.open(
-      `https://www.mercadopago.com.br/subscriptions/checkout?preapproval_plan_id=${plan_id}`,
+      `/checkout?planId=${plan_id}&type=${type}`,
       "_blank"
     );
   };
@@ -88,17 +89,9 @@ export default function MercadoPagoButton({ plan_id }: { plan_id?: string }) {
             </Dialog.Close>
 
             <Dialog.Close asChild>
-              <button
-                onClick={handleCheckout}
-                className={`px-4 py-2 rounded-lg text-white ${
-                  accepted
-                    ? "bg-primary"
-                    : "bg-gray-400 cursor-not-allowed"
-                }`}
-                disabled={!accepted}
-              >
-                Continuar
-              </button>
+              <Button onClick={ handleCheckout } className="transition-all duration-300 h-full px-4 py-3" disabled={!accepted} variant={!accepted ? "outline" : "default"}>
+                Contratar Plano
+              </Button>
             </Dialog.Close>
           </div>
         </Dialog.Content>

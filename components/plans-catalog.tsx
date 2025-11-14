@@ -1,3 +1,4 @@
+import { type Plan, plans } from "@/app/constants/plans"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
@@ -5,134 +6,6 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Check, Heart, MapPin, Star } from "lucide-react"
 import MercadoPagoButton from "./checkout-button"
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "./ui/dialog"
-
-interface Plan {
-  id: string
-  name: string
-  operator?: string
-  type: "Individual" | "Familiar" | "Empresarial"
-  price: number
-  originalPrice?: number
-  coverage: string[]
-  highlights: string[]
-  rating: number
-  network: string
-  popular?: boolean
-  bestValue?: boolean
-  plan_id?: string
-  warning?: string[]
-}
-
-export const plans = [
-  {
-    id: "1",
-    name: "Essencial",
-    type: "Individual",
-    price: 64.9,
-    highlights: [
-      "Orientação Saúde + Telemedicina",
-      "Descontos em medicamentos",
-      "Descontos em consultas e exames",
-      "Assistência Residencial",
-      "Acidentes Pessoais R$ 10 mil",
-      "Assistência funeral R$ 5 mil",
-    ],
-    plan_id: "e6b561a133be433bb6450ae64b572bd6"
-  },
-  {
-    id: "2",
-    name: "Protege",
-    type: "Individual",
-    price: 84.9,
-    popular: true,
-    highlights: [
-      "Orientação Saúde + Telemedicina",
-      "Descontos em medicamentos",
-      "Descontos em consultas e exames",
-      "Assistência Residencial",
-      "Assistência PET",
-      "Acidentes Pessoais R$ 10 mil",
-      "Assistência funeral R$ 5 mil",
-    ],
-    plan_id: "8c903ac8624147b9b25ee033102b6f56"
-  },
-  {
-    id: "3",
-    name: "Premium",
-    type: "Individual",
-    price: 120.0,
-    highlights: [
-      "Orientação Saúde + Telemedicina",
-      "Descontos em medicamentos",
-      "Descontos em consultas e exames",
-      "Assistência Residencial",
-      "Assistência PET",
-      "Check-up completo",
-      "Acidentes Pessoais R$ 10 mil",
-      "Assistência funeral R$ 5 mil",
-    ],
-    plan_id: "076d7b9365bb46eb9f12871ecbd0b506"
-  }, {
-    id: "4",
-    name: "Essencial",
-    type: "Familiar",
-    price: 104.9,
-    highlights: [
-      "Orientação Saúde + Telemedicina",
-      "Descontos em medicamentos",
-      "Descontos em consultas e exames",
-      "Assistências Residencial*",
-      "Acidentes Pessoais R$ 10 mil**",
-      "Assistência funeral R$ 5 mil**"
-    ],
-    warning: [
-      "* Assistência Residencial: Disponível para o titular.",
-      "** Seguro Acidentes Pessoais e Assistência Funeral: Disponível para o Titular/Segurado."
-    ],
-    rating: 4.9,
-  },
-  {
-    id: "5",
-    name: "Protege",
-    type: "Familiar",
-    popular: true,
-    price: 131.9,
-    highlights: [
-      "Orientação Saúde + Telemedicina",
-      "Descontos em medicamentos",
-      "Descontos em consultas e exames",
-      "Assistência Residencial *",
-      "Assistência PET *",
-      "Acidentes Pessoais R$ 10 mil**",
-      "Assistência funeral R$ 5 mil**",
-    ],
-    warning: [
-      "* Assistência Pet: Disponível para o o PET do Titular/Segurado. Válido para cães e gatos com idade até 8 anos.  Um pet por CPF. Assistência Residencial: Disponível para o titular.",
-      "** Seguro Acidentes Pessoais e Assistência Funeral: Disponível para o Titular/Segurado."
-    ],
-  },
-  {
-    id: "7",
-    name: "Premium",
-    type: "Familiar",
-    price: 215.0,
-    highlights: [
-      "Orientação Saúde + Telemedicina",
-      "Descontos em medicamentos",
-      "Descontos em consultas e exames",
-      "Assistência Residencial *",
-      "Assistência PET *",
-      "Check-up completo",
-      "Acidentes Pessoais R$ 10 mil **",
-      "Assistência funeral R$ 5 mil **",
-    ],
-    warning: [
-      "* Assistência Pet: Disponível para o o PET do Titular/Segurado. Válido para cães e gatos com idade até 8 anos.  Um pet por CPF. Assistência Residencial: Disponível para o titular.",
-      "** Seguro Acidentes Pessoais e Assistência Funeral: Disponível para o Titular/Segurado."
-    ],
-  },
-]
-
 
 export function PlansCatalog() {
   const individualPlans = plans.filter((p: any) => p.type === "Individual")
@@ -162,8 +35,8 @@ export function PlansCatalog() {
 
           <TabsContent value="individual">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {individualPlans.map((plan: any) => (
-                <PlanCard key={plan.id} plan={plan} />
+              {individualPlans.map((plan: Plan, index: number) => (
+                <PlanCard key={index} plan={plan} />
               ))}
             </div>
           </TabsContent>
@@ -173,8 +46,8 @@ export function PlansCatalog() {
               <span className="text-center font-bold text-slate-500">(CPF do titular + 3 dependentes sem comprovação de vínculo familiar)</span>
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {familiarPlans.map((plan: any) => (
-                <PlanCard key={plan.id} plan={plan} />
+              {familiarPlans.map((plan: Plan, index: number) => (
+                <PlanCard key={index} plan={plan} />
               ))}
             </div>
           </TabsContent>
@@ -249,7 +122,7 @@ function PlanCard({ plan }: { plan: Plan }) {
           <div className="space-y-3 w-full px-8">
             <div className="space-y-2">
               <h4 className="font-semibold text-sm text-primary">Assistências:</h4>
-              {plan.highlights.map((highlight, index) => (
+              {plan?.highlights?.map((highlight, index) => (
                 <div key={index} className="flex items-center gap-2 text-sm">
                   <Heart className="h-4 w-4 text-primary" />
                   <span className="font-medium text-primary">{highlight}</span>
@@ -275,7 +148,7 @@ function PlanCard({ plan }: { plan: Plan }) {
         <div className="grid gap-4 grid-cols-1">
           <div className="w-full flex flex-col gap-4 justify-center">
             {plan.plan_id && (
-              <MercadoPagoButton plan_id={plan.plan_id} />
+              <MercadoPagoButton plan_id={plan.plan_id} type={plan.type} />
             )}
             <Dialog>
               <DialogTrigger asChild>
@@ -316,7 +189,7 @@ function PlanCard({ plan }: { plan: Plan }) {
                     <div className="space-y-3 bg-muted/50 rounded-lg p-4 border">
                       <p className="text-sm font-medium text-muted-foreground">Destaques</p>
 
-                      {plan.highlights.map((highlight, index) => (
+                      {plan.highlights?.map((highlight, index) => (
                         <div key={index} className="flex items-center gap-2 text-sm">
                           <Star className="h-4 w-4 text-primary fill-primary" />
                           <span>{highlight}</span>
@@ -351,7 +224,7 @@ function PlanCard({ plan }: { plan: Plan }) {
                   {/* CTA */}
                   {plan.plan_id && (
                     <div className="pt-4 border-t">
-                      <MercadoPagoButton plan_id={plan.plan_id} />
+                      <MercadoPagoButton plan_id={ plan.plan_id } type={plan.type} />
                     </div>
                   )}
                 </div>
