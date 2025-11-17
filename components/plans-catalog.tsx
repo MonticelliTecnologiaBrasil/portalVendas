@@ -3,8 +3,9 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Check, Heart, MapPin, Star } from "lucide-react"
+import { Heart, Plus } from "lucide-react"
 import MercadoPagoButton from "./checkout-button"
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./ui/accordion"
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "./ui/dialog"
 
 export function PlansCatalog() {
@@ -157,7 +158,7 @@ function PlanCard({ plan }: { plan: Plan }) {
                 </Button>
               </DialogTrigger>
 
-              <DialogContent className="max-w-2xl p-8">
+              <DialogContent className="w-full p-8">
                 <DialogHeader className="space-y-2 border-b pb-4">
                   <DialogTitle className="text-3xl font-extrabold tracking-tight">
                     {plan.name}
@@ -168,7 +169,6 @@ function PlanCard({ plan }: { plan: Plan }) {
                 </DialogHeader>
 
                 <div className="space-y-8">
-                  {/* Preço e Destaques */}
                   <section className="grid md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <p className="text-sm text-muted-foreground font-medium">Mensalidade</p>
@@ -186,6 +186,11 @@ function PlanCard({ plan }: { plan: Plan }) {
                       )}
                     </div>
 
+
+                  </section>
+                  {/* 
+                  <section>
+
                     <div className="space-y-3 bg-muted/50 rounded-lg p-4 border">
                       <p className="text-sm font-medium text-muted-foreground">Destaques</p>
 
@@ -196,35 +201,49 @@ function PlanCard({ plan }: { plan: Plan }) {
                         </div>
                       ))}
                     </div>
-                  </section>
+                  </section> */}
 
-                  {/* Rede Credenciada */}
-                  <section className="space-y-3">
-                    <h3 className="text-lg font-semibold flex items-center gap-2">
-                      <MapPin className="h-5 w-5 text-primary" /> Rede Credenciada
-                    </h3>
-                    <p className="text-sm text-muted-foreground">
-                      {plan.network}
-                    </p>
-                  </section>
 
-                  {/* Cobertura completa */}
-                  <section>
-                    <h3 className="text-lg font-semibold mb-3">Cobertura Completa</h3>
-                    <div className="grid sm:grid-cols-2 gap-y-2 gap-x-4">
-                      {plan.coverage && plan.coverage.map((item, i) => (
-                        <div key={i} className="flex items-start gap-2 text-sm leading-tight">
-                          <Check className="h-4 w-4 text-green-600" />
-                          {item}
-                        </div>
+
+                  <section className="max-h-96 overflow-y-scroll appearance-none">
+                    <Accordion type="single" collapsible className="space-y-4">
+                      {plan.details && plan.details.map((detail, index) => (
+                        <AccordionItem
+                          key={index}
+                          value={`item-${index}`}
+                          className="border-0 overflow-hidden rounded-lg bg-muted/30 px-6 py-0 transition-all duration-200 hover:bg-muted/50 data-[state=open]:bg-primary/5"
+                        >
+                          <AccordionTrigger className="py-5 text-left font-semibold text-lg hover:no-underline group">
+                            <div className="flex items-start gap-4 w-full">
+                              <Plus className="h-5 w-5 text-primary flex-shrink-0 group-data-[state=open]:rotate-45 transition-transform duration-300 mt-0.5" />
+                              <span className="text-foreground group-hover:text-primary transition-colors duration-200">
+                                {detail.title}
+                              </span>
+                            </div>
+                          </AccordionTrigger>
+                          <AccordionContent className="pb-5 pt-0 pl-14 text-muted-foreground leading-relaxed whitespace-pre-line">
+                            {detail.text}
+                          </AccordionContent>
+                        </AccordionItem>
                       ))}
-                    </div>
+                    </Accordion>
                   </section>
-
+                  {plan.warning && (
+                    <section className="space-y-1 w-full">
+                      <h4 className="font-semibold text-sm">Observações:</h4>
+                      <div className="space-y-1">
+                        {plan.warning.map((item, index) => (
+                          <div key={index} className="flex items-center gap-2 text-sm">
+                            <span>{item}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </section>
+                  )}
                   {/* CTA */}
                   {plan.plan_id && (
                     <div className="pt-4 border-t">
-                      <MercadoPagoButton plan_id={ plan.plan_id } type={plan.type} />
+                      <MercadoPagoButton plan_id={plan.plan_id} type={plan.type} />
                     </div>
                   )}
                 </div>

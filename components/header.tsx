@@ -4,7 +4,9 @@ import { CONTACT_MESSAGE, KNOW_MORE, WPP_NUMBER } from "@/contants/whatsapp";
 import BenemedLogoColorido from "@/public/logo-benemed-colorido.svg";
 import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
+import { Button } from "./ui/button";
 
 export function Header() {
   const [isFixed, setIsFixed] = useState(false);
@@ -41,12 +43,17 @@ export function Header() {
             <nav className="hidden md:flex justify-center items-center gap-8">
               <a href="#planos" className="text-foreground hover:text-primary transition-colors">Planos</a>
               <a href="#faq" className="text-foreground hover:text-primary transition-colors">F.A.Q.</a>
-              <a href={`https://wa.me/${WPP_NUMBER}?text=${encodeURIComponent(CONTACT_MESSAGE)}`} target="_blank" className="text-foreground hover:text-primary transition-colors flex">Contato <ArrowUpRight className="opacity-50" size={12}/></a>
+              <a href={`https://wa.me/${WPP_NUMBER}?text=${encodeURIComponent(CONTACT_MESSAGE)}`} target="_blank" className="text-foreground hover:text-primary transition-colors flex">Contato <ArrowUpRight className="opacity-50" size={12} /></a>
             </nav>
 
             <div className="flex items-center gap-4 justify-end">
 
-              {/* botões ou alguma outra coisa */}
+              <Link href={"https://portal.benemedsaude.com.br"} target="_blank">
+                <Button>
+                  Já sou cliente
+                </Button>
+              </Link>
+
             </div>
           </div>
         </div>

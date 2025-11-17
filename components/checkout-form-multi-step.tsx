@@ -4,66 +4,12 @@ import { StepCardInfo } from "@/app/checkout/checkout-steps/step-card-info"
 import { StepPersonalInfo } from "@/app/checkout/checkout-steps/step-personal-info"
 import { StepPlanConfirmation } from "@/app/checkout/checkout-steps/step-plan-confirmation"
 import { StepReview } from "@/app/checkout/checkout-steps/step-review"
+import { plans } from "@/app/constants/plans"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Progress } from "@/components/ui/progress"
 import { AlertCircle, ChevronLeft, ChevronRight, Loader2 } from 'lucide-react'
 import { useState } from "react"
-
-
-interface Plan {
-  id: string
-  name: string
-  type: "Individual" | "Familiar"
-  price: number
-  highlights: string[]
-  warning?: string[]
-}
-
-const PLANS: Plan[] = [
-  {
-    id: "10",
-    name: "Essencial Saúde Mental",
-    type: "Individual",
-    price: 99.0,
-    highlights: [
-      "Psicologia Online*",
-      "Orientação Saúde + Telemedicina",
-      "Descontos em medicamentos",
-      "Descontos em consultas e exames",
-    ],
-    warning: ["* Até cinco atendimentos com psicólogos por mês."],
-  },
-  {
-    id: "11",
-    name: "Premium Saúde Mental",
-    type: "Individual",
-    price: 199.0,
-    highlights: ["Psicologia Online*", "Orientação Saúde + Telemedicina", "Check-up completo", "Assistência PET"],
-    warning: ["* Até cinco atendimentos com psicólogos por mês."],
-  },
-  {
-    id: "8",
-    name: "Essencial Saúde Mental",
-    type: "Familiar",
-    price: 198.0,
-    highlights: [
-      "Psicologia Online *",
-      "Orientação Saúde + Telemedicina",
-      "Descontos em medicamentos",
-      "Descontos em consultas e exames",
-    ],
-    warning: ["* Até cinco atendimentos com psicólogos por mês."],
-  },
-  {
-    id: "9",
-    name: "Premium Saúde Mental",
-    type: "Familiar",
-    price: 289.0,
-    highlights: ["Psicologia Online *", "Orientação Saúde + Telemedicina", "Check-up completo", "Assistência PET"],
-    warning: ["* Até cinco atendimentos com psicólogos por mês."],
-  },
-]
 
 interface CheckoutFormMultiStepProps {
   initialPlanId?: string
@@ -71,7 +17,7 @@ interface CheckoutFormMultiStepProps {
 }
 
 export function CheckoutFormMultiStep({ initialPlanId, initialType }: CheckoutFormMultiStepProps) {
-  const selectedPlan = PLANS.find((p) => p.id === initialPlanId) || PLANS[0]
+  const selectedPlan = plans.find((p) => p.plan_id === initialPlanId) || plans[0]
   const [currentStep, setCurrentStep] = useState(1)
   const totalSteps = 4 // Reduzido de 6 para 4 etapas (removidas endereço e banco)
 
@@ -156,11 +102,12 @@ export function CheckoutFormMultiStep({ initialPlanId, initialType }: CheckoutFo
 
       if (!cardTokenResponse.ok) {
         const errorData = await cardTokenResponse.json().catch(() => ({}))
-        throw new Error(errorData.message || 'Erro ao tokenizar cartão. Verifique os dados do cartão.')
+        throw new Error(errorData.error || 'Erro ao tokenizar cartão. Verifique os dados do cartão.')
       }
 
       const cardTokenData = await cardTokenResponse.json()
       const cardTokenId = cardTokenData.id
+
 
       const preapprovalResponse = await fetch('/api/mercado-pago/create-preapproval', {
         method: 'POST',
@@ -168,7 +115,7 @@ export function CheckoutFormMultiStep({ initialPlanId, initialType }: CheckoutFo
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          preapproval_plan_id: "3a9f17c2445d41f38e63ebc0e2cfd739", // ID do plano fixo do Mercado Pago
+          preapproval_plan_id: selectedPlan.plan_id,
           reason: `Assinatura de Plano - ${selectedPlan.name}`,
           external_reference: `health_plan_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
           payer_email: personalInfo.email,
@@ -192,6 +139,8 @@ export function CheckoutFormMultiStep({ initialPlanId, initialType }: CheckoutFo
       }
 
       const preapprovalData = await preapprovalResponse.json()
+
+      console.log(preapprovalData)
 
       window.location.href = `/checkout/success?subscription=${preapprovalData.id}`
     } catch (err) {
@@ -220,10 +169,8 @@ export function CheckoutFormMultiStep({ initialPlanId, initialType }: CheckoutFo
         </CardHeader>
 
         <CardContent className="space-y-8">
-          {/* Step 1: Plan Confirmation */}
           {currentStep === 1 && <StepPlanConfirmation plan={selectedPlan} />}
 
-          {/* Step 2: Personal Info */}
           {currentStep === 2 && (
             <StepPersonalInfo
               data={personalInfo}
@@ -233,10 +180,8 @@ export function CheckoutFormMultiStep({ initialPlanId, initialType }: CheckoutFo
             />
           )}
 
-          {/* Step 3: Card Info */}
           {currentStep === 3 && <StepCardInfo data={cardInfo} onChange={setCardInfo} errors={errors} />}
 
-          {/* Step 4: Review */}
           {currentStep === 4 && (
             <StepReview
               data={{

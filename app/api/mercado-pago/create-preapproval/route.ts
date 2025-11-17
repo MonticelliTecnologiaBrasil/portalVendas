@@ -1,10 +1,13 @@
+"use server"
+
 import { type NextRequest, NextResponse } from 'next/server'
 
 export async function POST(request: NextRequest) {
   try {
     const { payer_email, card_token_id, plan_id, plan_price } = await request.json()
 
-    const accessToken = process.env.MERCADO_PAGO_ACCESS_TOKEN || "APP_USR-2650418305658524-111409-696b22997519f2981a63c9e6fe3bc793-2989164016"
+    const accessToken = process.env.MERCADO_PAGO_ACCESS_TOKEN
+    // const accessToken = "APP_USR-2650418305658524-111409-696b22997519f2981a63c9e6fe3bc793-2989164016"
 
     if (!accessToken) {
       return NextResponse.json({ error: 'Configuração indisponível' }, { status: 500 })
@@ -16,11 +19,11 @@ export async function POST(request: NextRequest) {
       external_reference: `health_plan_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
       payer_email: payer_email,
       card_token_id: card_token_id,
-      back_url: `http://localhost:3000/checkout/success`,
+      back_url: `${window.location.host}/checkout/success`,
       status: 'authorized',
     }
 
-    console.log("xalamatanga: ", preapprovalData)
+    
 
     const response = await fetch('https://api.mercadopago.com/preapproval', {
       method: 'POST',
