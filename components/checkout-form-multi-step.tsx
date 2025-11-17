@@ -108,7 +108,6 @@ export function CheckoutFormMultiStep({ initialPlanId, initialType }: CheckoutFo
       const cardTokenData = await cardTokenResponse.json()
       const cardTokenId = cardTokenData.id
 
-
       const preapprovalResponse = await fetch('/api/mercado-pago/create-preapproval', {
         method: 'POST',
         headers: {
@@ -140,9 +139,8 @@ export function CheckoutFormMultiStep({ initialPlanId, initialType }: CheckoutFo
 
       const preapprovalData = await preapprovalResponse.json()
 
-      console.log(preapprovalData)
 
-      window.location.href = `/checkout/success?subscription=${preapprovalData.id}`
+      window.location.href = `/checkout/success`
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : 'Erro ao processar contração. Tente novamente.'
       setError(errorMessage)
