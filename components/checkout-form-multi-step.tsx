@@ -4,6 +4,7 @@ import { StepCardInfo } from "@/app/checkout/checkout-steps/step-card-info"
 import { StepPersonalInfo } from "@/app/checkout/checkout-steps/step-personal-info"
 import { StepPlanConfirmation } from "@/app/checkout/checkout-steps/step-plan-confirmation"
 import { StepReview } from "@/app/checkout/checkout-steps/step-review"
+import { MPLogo } from "@/app/checkout/icons/mercado-pago"
 import { plans } from "@/app/constants/plans"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -167,20 +168,21 @@ export function CheckoutFormMultiStep({ initialPlanId, initialType }: CheckoutFo
         </CardHeader>
 
         <CardContent className="space-y-8">
-          {currentStep === 1 && <StepPlanConfirmation plan={selectedPlan} />}
+          {currentStep === 1 && (
+            <>
+              <StepPlanConfirmation plan={selectedPlan} />
+              <StepPersonalInfo
+                data={personalInfo}
+                onChange={setPersonalInfo}
+                errors={errors}
+                showCpf={true}
+              /></>
+          )
+          }
 
-          {currentStep === 2 && (
-            <StepPersonalInfo
-              data={personalInfo}
-              onChange={setPersonalInfo}
-              errors={errors}
-              showCpf={true}
-            />
-          )}
+          {currentStep === 2 && <StepCardInfo data={cardInfo} onChange={setCardInfo} errors={errors} />}
 
-          {currentStep === 3 && <StepCardInfo data={cardInfo} onChange={setCardInfo} errors={errors} />}
-
-          {currentStep === 4 && (
+          {currentStep === 3 && (
             <StepReview
               data={{
                 plan: {
@@ -234,10 +236,12 @@ export function CheckoutFormMultiStep({ initialPlanId, initialType }: CheckoutFo
               </Button>
             )}
           </div>
-
-          <p className="text-xs text-muted-foreground text-center">
-            Seus dados estão protegidos e será criada uma assinatura segura via Mercado Pago.
-          </p>
+          
+          <div className="flex gap-3 items-center justify-center">
+            <p className="text-xs text-muted-foreground text-center">
+              Seus dados estão protegidos e será criada uma assinatura segura via
+            </p><MPLogo />
+          </div>
         </CardContent>
       </Card>
     </div>

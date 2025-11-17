@@ -3,7 +3,7 @@
 import { Plan } from "@/app/constants/plans"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { AlertCircle, Heart } from "lucide-react"
+import { AlertCircle } from "lucide-react"
 
 interface StepPlanConfirmationProps {
   plan: Plan
@@ -25,14 +25,14 @@ export function StepPlanConfirmation({ plan }: StepPlanConfirmationProps) {
             </div>
           </CardHeader>
           <CardContent className="space-y-4">
-            <div className="flex items-baseline gap-2">
+            <div className="flex items-baseline gap-1">
               <span className="text-3xl font-bold">
                 R$ {plan.price.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}
               </span>
               <span className="text-muted-foreground">/mês</span>
             </div>
 
-            <div className="space-y-2">
+            {/* <div className="space-y-2">
               <p className="text-sm font-medium">Principais benefícios:</p>
               <div className="space-y-2">
                 {plan.highlights && plan.highlights.map((benefit, idx) => (
@@ -42,7 +42,7 @@ export function StepPlanConfirmation({ plan }: StepPlanConfirmationProps) {
                   </div>
                 ))}
               </div>
-            </div>
+            </div> */}
 
             {plan.warning && plan.warning.length > 0 && (
               <div className="flex gap-3 p-3 rounded-lg bg-amber-50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-900/30">

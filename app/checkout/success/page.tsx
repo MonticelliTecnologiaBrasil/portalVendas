@@ -29,12 +29,15 @@ export default function SuccessPage() {
                 </p>
               </div>
 
-              <div className="space-y-3 pt-4">
+              <div className="grid gap-4 pt-4">
                 <Link href="/" className="block">
-                  <Button className="w-full">Voltar para a página inicial</Button>
+                  <Button className="py-6 md:py-4 w-full">Voltar para a página inicial</Button>
+                </Link>
+                <Link href="https://portal.benemedsaude.com.br/ords/f?p=295:9996:508594061776469:::::">
+                  <Button className="py-6 md:py-4 w-full bg-secondary hover:bg-secondary">Acesse agora seus benefícios</Button>
                 </Link>
                 <Link href="/contato" className="block">
-                  <Button variant="outline" className="w-full bg-transparent">
+                  <Button className="py-6 md:py-4 w-full bg-transparent" variant="outline">
                     Fale com um consultor
                   </Button>
                 </Link>

@@ -11,6 +11,5 @@ export async function POST(req: Request) {
   });
 
   const data = await res.json();
-  console.log("toke do cartão: ", data)
   return NextResponse.json({ status: res.status, data });
 }

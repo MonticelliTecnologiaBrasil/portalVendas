@@ -21,10 +21,7 @@ export default function MercadoPagoButton({ plan_id, type }: { plan_id: string, 
 
   const handleCheckout = () => {
     if (!accepted) return;
-    window.open(
-      `/checkout?planId=${plan_id}&type=${type}`,
-      "_blank"
-    );
+    return window.location.href = `/checkout?planId=${plan_id}&type=${type}`;
   };
 
   return (
@@ -77,7 +74,7 @@ export default function MercadoPagoButton({ plan_id, type }: { plan_id: string, 
               className="mr-2 h-4 w-4 text-primary border-gray-300 rounded focus:ring-primary"
             />
             <label htmlFor="terms" className="text-sm text-gray-800 flex gap-1">
-              Li e aceito os <Link href="/pdfs/Termos_e_Condicoes_Benemed.pdf" target="_blank" className="text-primary flex ">termos de uso <ArrowUpRight size={12} /></Link>
+              Li e aceito os <Link href="/pdfs/Termos_e_Condicoes_Benemed.pdf" className="text-primary flex ">termos de uso <ArrowUpRight size={12} /></Link>
             </label>
           </div>
 

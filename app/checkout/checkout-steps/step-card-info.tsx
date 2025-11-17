@@ -1,6 +1,7 @@
 "use client"
 
 import { AlertCircle } from "lucide-react"
+import { MPLogo } from "../icons/mercado-pago"
 
 interface CardInfoData {
   cardNumber: string
@@ -45,11 +46,12 @@ export function StepCardInfo({ data, onChange, errors = {} }: StepCardInfoProps)
         <p className="text-sm text-muted-foreground">Sua informação será criptografada e segura</p>
       </div>
 
-      <div className="flex gap-3 p-3 rounded-lg bg-blue-50 dark:bg-blue-950/20 border border-blue-200 dark:border-blue-900/30">
-        <AlertCircle className="w-5 h-5 text-blue-600 dark:text-blue-500 shrink-0 mt-0.5" />
-        <p className="text-xs text-blue-800 dark:text-blue-200">
-          O pagamento é processado de forma segura pelo Mercado Pago
+      <div className="flex items-center gap-3 p-3 rounded-lg bg-blue-50 dark:bg-blue-950/20 border border-blue-200 dark:border-blue-900/30">
+        <AlertCircle className="w-5 h-5 text-blue-600 dark:text-blue-500 shrink-0" />
+        <p className="text-xs text-blue-800 dark:text-blue-200 flex">
+          O pagamento é processado de forma segura pelo
         </p>
+        <MPLogo />
       </div>
 
       <div className="space-y-4">
@@ -64,11 +66,10 @@ export function StepCardInfo({ data, onChange, errors = {} }: StepCardInfoProps)
             value={formatCardNumber(data.cardNumber)}
             onChange={(e) => handleChange("cardNumber", e.target.value.replace(/\s/g, ""))}
             maxLength={19}
-            className={`w-full px-4 py-2.5 rounded-lg border bg-background transition-colors font-mono ${
-              errors.cardNumber
+            className={`w-full px-4 py-2.5 rounded-lg border bg-background transition-colors font-mono ${errors.cardNumber
                 ? "border-destructive focus:outline-none focus:ring-2 focus:ring-destructive/50"
                 : "border-input focus:outline-none focus:ring-2 focus:ring-ring/50"
-            }`}
+              }`}
             aria-invalid={!!errors.cardNumber}
             aria-describedby={errors.cardNumber ? "cardNumber-error" : undefined}
           />
@@ -89,11 +90,10 @@ export function StepCardInfo({ data, onChange, errors = {} }: StepCardInfoProps)
             placeholder="João Silva"
             value={data.cardHolder}
             onChange={(e) => handleChange("cardHolder", e.target.value)}
-            className={`w-full px-4 py-2.5 rounded-lg border bg-background transition-colors ${
-              errors.cardHolder
+            className={`w-full px-4 py-2.5 rounded-lg border bg-background transition-colors ${errors.cardHolder
                 ? "border-destructive focus:outline-none focus:ring-2 focus:ring-destructive/50"
                 : "border-input focus:outline-none focus:ring-2 focus:ring-ring/50"
-            }`}
+              }`}
             aria-invalid={!!errors.cardHolder}
             aria-describedby={errors.cardHolder ? "cardHolder-error" : undefined}
           />
@@ -116,11 +116,10 @@ export function StepCardInfo({ data, onChange, errors = {} }: StepCardInfoProps)
               value={formatExpiryDate(data.expiryDate)}
               onChange={(e) => handleChange("expiryDate", e.target.value)}
               maxLength={5}
-              className={`w-full px-4 py-2.5 rounded-lg border bg-background transition-colors font-mono ${
-                errors.expiryDate
+              className={`w-full px-4 py-2.5 rounded-lg border bg-background transition-colors font-mono ${errors.expiryDate
                   ? "border-destructive focus:outline-none focus:ring-2 focus:ring-destructive/50"
                   : "border-input focus:outline-none focus:ring-2 focus:ring-ring/50"
-              }`}
+                }`}
               aria-invalid={!!errors.expiryDate}
               aria-describedby={errors.expiryDate ? "expiryDate-error" : undefined}
             />
@@ -142,11 +141,10 @@ export function StepCardInfo({ data, onChange, errors = {} }: StepCardInfoProps)
               value={data.cvv}
               onChange={(e) => handleChange("cvv", e.target.value.replace(/\D/g, "").slice(0, 4))}
               maxLength={4}
-              className={`w-full px-4 py-2.5 rounded-lg border bg-background transition-colors font-mono ${
-                errors.cvv
+              className={`w-full px-4 py-2.5 rounded-lg border bg-background transition-colors font-mono ${errors.cvv
                   ? "border-destructive focus:outline-none focus:ring-2 focus:ring-destructive/50"
                   : "border-input focus:outline-none focus:ring-2 focus:ring-ring/50"
-              }`}
+                }`}
               aria-invalid={!!errors.cvv}
               aria-describedby={errors.cvv ? "cvv-error" : undefined}
             />
