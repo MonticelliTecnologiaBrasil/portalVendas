@@ -68,7 +68,7 @@ export function PlansCatalog() {
 
           {/* Familiar */}
           <TabsContent value="familiar">
-            <div className="w-full grid place-items-center pb-8 text-center px-4">
+            <div className="sm:hidden w-full grid place-items-center pb-8 text-center px-4">
               <span className="font-bold text-sm sm:text-base text-slate-500">
                 (CPF do titular + 3 dependentes sem comprovação de vínculo familiar)
               </span>
@@ -100,7 +100,7 @@ export function PlansCatalog() {
             </div>
           </TabsContent>
 
-          {/* Familiar */}
+          {/* Familiar
           <TabsContent value="familiar">
             <div className="w-full grid place-items-center pb-8 text-center px-4">
               <span className="font-bold text-sm sm:text-base text-slate-500">
@@ -113,7 +113,7 @@ export function PlansCatalog() {
                 <PlanCard key={index} plan={plan} />
               ))}
             </div>
-          </TabsContent>
+          </TabsContent> */}
         </Tabs>
       </div>
     </section>
