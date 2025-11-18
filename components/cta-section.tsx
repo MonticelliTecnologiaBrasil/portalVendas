@@ -40,7 +40,7 @@ const plans: PlanCard[] = [
       "Assistência funeral R$ 5 mil",
     ],
     warning: ["* Até cinco atendimentos com psicólogos por mês."],
-    plan_id: "e6b561a133be433bb6450ae64b572bd6",
+    plan_id: "55c44232a5fe446ca5a748d9249640f3",
     details: [
       {
         title: "Psicologia Online",
@@ -89,7 +89,7 @@ const plans: PlanCard[] = [
       "Assistência funeral R$ 5 mil",
     ],
     warning: ["* Até cinco atendimentos com psicólogos por mês."],
-    plan_id: "076d7b9365bb46eb9f12871ecbd0b506",
+    plan_id: "b8587cf2c8ae47fd88c901d3d659ea85",
     details: [
       {
         title: "Psicologia Online",
@@ -134,6 +134,7 @@ const plans: PlanCard[] = [
     name: "Essencial Saúde Mental",
     type: "Familiar",
     price: 198.0,
+    plan_id: "cf202c8d75e54b43a6ca94c7c81621d5",
     highlights: [
       "Psicologia Online *",
       "Orientação Saúde + Telemedicina",
@@ -183,6 +184,7 @@ const plans: PlanCard[] = [
     id: "4",
     name: "Premium Saúde Mental",
     type: "Familiar",
+    plan_id: "b2a6a9085d0c436eaea884bcf6d76a50",
     price: 289.0,
     highlights: [
       "Psicologia Online *",
@@ -310,151 +312,155 @@ function PlanCard({ plan }: { plan: PlanCard }) {
 
   return (
     <ScrollAnimation>
-    <Card
-      className={`relative p-4 sm:p-6 border-2 hover:shadow-xl transition-all duration-300 bg-card/80 backdrop-blur flex flex-col h-full
+      <Card
+        className={`relative p-4 sm:p-6 border-2 hover:shadow-xl transition-all duration-300 bg-card/80 backdrop-blur flex flex-col h-full
       ${isPremium ? "border-primary shadow-lg" : "border-border hover:border-primary/50"}`}
-    >
-      {isPremium && (
-        <>
-          <div className="absolute -top-10 -right-10 w-16 sm:w-20 h-16 sm:h-20 bg-purple-300/20 rounded-full blur-xl"></div>
-          <Badge className="absolute -top-3 left-4 sm:left-6 bg-primary text-primary-foreground px-2 py-1 sm:px-3 sm:py-1 text-xs sm:text-sm">
-            Mais Popular
-          </Badge>
-        </>
-      )}
-
-      <div className="flex flex-col h-full justify-between gap-6">
-        {/* HEADER */}
-        <div className="flex flex-col gap-2 items-center text-center">
-          <h3 className="text-lg sm:text-xl font-bold text-foreground">{plan.name}</h3>
-
-          <Badge variant="outline" className="text-[10px] sm:text-xs">
-            {plan.type}
-          </Badge>
-
-          <div className="pt-1">
-            <div className="flex items-baseline justify-center gap-2">
-              <span className="text-2xl sm:text-3xl font-bold text-primary">
-                {plan.price.toLocaleString("pt-BR", {
-                  style: "currency",
-                  currency: "BRL"
-                })}
-              </span>
-              <span className="text-muted-foreground text-xs sm:text-sm">/mês</span>
-            </div>
-          </div>
-        </div>
-
-        {/* HIGHLIGHTS */}
-        <div className="space-y-3 flex-1 px-4 sm:px-8">
-          <h4 className="font-semibold text-xs sm:text-sm text-primary">Assistências:</h4>
-          <ul className="space-y-2">
-            {plan.highlights.map((highlight, index) => (
-              <li key={index} className="flex items-start gap-2 text-xs sm:text-sm">
-                <Heart className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
-                <span className="text-primary font-medium">{highlight}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* WARNINGS */}
-        {plan.warning && (
-          <div className="px-4 sm:px-8 space-y-2">
-            <h4 className="font-semibold text-[11px] sm:text-xs text-muted-foreground">
-              Observações:
-            </h4>
-            {plan.warning.map((item, index) => (
-              <p key={index} className="text-[11px] sm:text-xs text-muted-foreground leading-relaxed">
-                {item}
-              </p>
-            ))}
-          </div>
+      >
+        {isPremium && (
+          <>
+            <div className="absolute -top-10 -right-10 w-16 sm:w-20 h-16 sm:h-20 bg-purple-300/20 rounded-full blur-xl"></div>
+            <Badge className="absolute -top-3 left-4 sm:left-6 bg-primary text-primary-foreground px-2 py-1 sm:px-3 sm:py-1 text-xs sm:text-sm">
+              Mais Popular
+            </Badge>
+          </>
         )}
 
-        {/* DIALOG */}
-        <Dialog>
-          <DialogTrigger asChild>
-            <Button variant="outline" className="cursor-pointer bg-transparent w-full" size="lg">
-              Ver Detalhes
-            </Button>
-          </DialogTrigger>
+        <div className="flex flex-col h-full justify-between gap-6">
+          {/* HEADER */}
+          <div className="flex flex-col gap-2 items-center text-center">
+            <h3 className="text-lg sm:text-xl font-bold text-foreground">{plan.name}</h3>
 
-          <DialogContent className="w-[95%] max-w-lg sm:max-w-2xl p-4 sm:p-8 max-h-[90vh] overflow-y-auto">
-            <DialogHeader className="space-y-2 border-b pb-4">
-              <DialogTitle className="text-xl sm:text-3xl font-extrabold tracking-tight">
-                {plan.name}
-              </DialogTitle>
-            </DialogHeader>
+            <Badge variant="outline" className="text-[10px] sm:text-xs">
+              {plan.type}
+            </Badge>
 
-            <div className="space-y-8">
-              {/* PRICE */}
-              <section className="grid sm:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <p className="text-xs sm:text-sm text-muted-foreground font-medium">Mensalidade</p>
-                  <p className="text-3xl sm:text-4xl font-extrabold text-primary leading-none">
-                    R$ {plan.price.toFixed(2).replace(".", ",")}
-                  </p>
-                  <p className="text-xs sm:text-sm text-muted-foreground">
-                    por pessoa / por mês
-                  </p>
-                </div>
-              </section>
-
-              {/* DETAILS */}
-              <section className="max-h-80 sm:max-h-96 overflow-y-auto pr-2">
-                <Accordion type="single" collapsible className="space-y-4">
-                  {plan.details?.map((detail, index) => (
-                    <AccordionItem
-                      key={index}
-                      value={`item-${index}`}
-                      className="border-0 rounded-lg bg-muted/30 px-4 sm:px-6 py-0 hover:bg-muted/50"
-                    >
-                      <AccordionTrigger className="py-4 sm:py-5 text-left text-sm sm:text-lg font-semibold">
-                        <div className="flex items-start gap-4 w-full">
-                          <Plus className="h-4 sm:h-5 w-4 sm:w-5 text-primary flex-shrink-0 group-data-[state=open]:rotate-45 transition-transform" />
-                          {detail.title}
-                        </div>
-                      </AccordionTrigger>
-
-                      <AccordionContent className="pb-4 pl-10 text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                        {detail.text}
-                      </AccordionContent>
-                    </AccordionItem>
-                  ))}
-                </Accordion>
-              </section>
-
-              {/* WARNINGS */}
-              {plan.warning && (
-                <section className="space-y-1">
-                  <h4 className="font-semibold text-sm">Observações:</h4>
-                  {plan.warning.map((item, index) => (
-                    <p key={index} className="text-xs sm:text-sm">
-                      {item}
-                    </p>
-                  ))}
-                </section>
-              )}
-
-              {/* CTA BUTTON */}
-              {plan.plan_id && (
-                <div className="pt-4 border-t">
-                  <MercadoPagoButton plan_id={plan.plan_id} type={plan.type} />
-                </div>
-              )}
+            <div className="pt-1">
+              <div className="flex items-baseline justify-center gap-2">
+                <span className="text-2xl sm:text-3xl font-bold text-primary">
+                  {plan.price.toLocaleString("pt-BR", {
+                    style: "currency",
+                    currency: "BRL"
+                  })}
+                </span>
+                <span className="text-muted-foreground text-xs sm:text-sm">/mês</span>
+              </div>
             </div>
-          </DialogContent>
-        </Dialog>
-
-        {/* CTA BUTTON OUTSIDE */}
-        {plan.plan_id && (
-          <div className="mt-3">
-            <MercadoPagoButton plan_id={plan.plan_id} type={plan.type} />
           </div>
-        )}
-      </div>
-    </Card></ScrollAnimation>
+
+          {/* HIGHLIGHTS */}
+          <div className="space-y-3 flex-1 px-4 sm:px-8">
+            <h4 className="font-semibold text-xs sm:text-sm text-primary">Assistências:</h4>
+            <ul className="space-y-2">
+              {plan.highlights.map((highlight, index) => (
+                <li key={index} className="flex items-start gap-2 text-xs sm:text-sm">
+                  <Heart className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
+                  <span className="text-primary font-medium">{highlight}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* WARNINGS */}
+          {plan.warning && (
+            <div className="px-4 sm:px-8 space-y-2">
+              <h4 className="font-semibold text-[11px] sm:text-xs text-muted-foreground">
+                Observações:
+              </h4>
+              {plan.warning.map((item, index) => (
+                <p key={index} className="text-[11px] sm:text-xs text-muted-foreground leading-relaxed">
+                  {item}
+                </p>
+              ))}
+            </div>
+          )}
+
+
+          <div className="grid gap-3">
+            {/* DIALOG */}
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button variant="outline" className="cursor-pointer bg-transparent w-full" size="lg">
+                  Ver Detalhes
+                </Button>
+              </DialogTrigger>
+
+              <DialogContent className="w-[95%] max-w-lg sm:max-w-2xl p-4 sm:p-8 max-h-[90vh] overflow-y-auto">
+                <DialogHeader className="space-y-2 border-b pb-4">
+                  <DialogTitle className="text-xl sm:text-3xl font-extrabold tracking-tight">
+                    {plan.name}
+                  </DialogTitle>
+                </DialogHeader>
+
+                <div className="space-y-8">
+                  {/* PRICE */}
+                  <section className="grid sm:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <p className="text-xs sm:text-sm text-muted-foreground font-medium">Mensalidade</p>
+                      <p className="text-3xl sm:text-4xl font-extrabold text-primary leading-none">
+                        R$ {plan.price.toFixed(2).replace(".", ",")}
+                      </p>
+                      <p className="text-xs sm:text-sm text-muted-foreground">
+                        por pessoa / por mês
+                      </p>
+                    </div>
+                  </section>
+
+                  {/* DETAILS */}
+                  <section className="max-h-80 sm:max-h-96 overflow-y-auto pr-2">
+                    <Accordion type="single" collapsible className="space-y-4">
+                      {plan.details?.map((detail, index) => (
+                        <AccordionItem
+                          key={index}
+                          value={`item-${index}`}
+                          className="border-0 rounded-lg bg-muted/30 px-4 sm:px-6 py-0 hover:bg-muted/50"
+                        >
+                          <AccordionTrigger className="py-4 sm:py-5 text-left text-sm sm:text-lg font-semibold">
+                            <div className="flex items-start gap-4 w-full">
+                              <Plus className="h-4 sm:h-5 w-4 sm:w-5 text-primary flex-shrink-0 group-data-[state=open]:rotate-45 transition-transform" />
+                              {detail.title}
+                            </div>
+                          </AccordionTrigger>
+
+                          <AccordionContent className="pb-4 pl-10 text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                            {detail.text}
+                          </AccordionContent>
+                        </AccordionItem>
+                      ))}
+                    </Accordion>
+                  </section>
+
+                  {/* WARNINGS */}
+                  {plan.warning && (
+                    <section className="space-y-1">
+                      <h4 className="font-semibold text-sm">Observações:</h4>
+                      {plan.warning.map((item, index) => (
+                        <p key={index} className="text-xs sm:text-sm">
+                          {item}
+                        </p>
+                      ))}
+                    </section>
+                  )}
+
+                  {/* CTA BUTTON */}
+                  {plan.plan_id && (
+                    <div className="pt-4 border-t">
+                      <MercadoPagoButton plan_id={plan.plan_id} type={plan.type} />
+                    </div>
+                  )}
+                </div>
+              </DialogContent>
+            </Dialog>
+
+            {/* CTA BUTTON OUTSIDE */}
+            {plan.plan_id && (
+              <div className="">
+                <MercadoPagoButton plan_id={plan.plan_id} type={plan.type} />
+              </div>
+            )}
+          </div>
+        </div>
+      </Card>
+    </ScrollAnimation>
   )
 }
 

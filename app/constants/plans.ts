@@ -33,7 +33,7 @@ export const plans = [
       "Acidentes Pessoais R$ 10 mil",
       "Assistência funeral R$ 5 mil",
     ],
-    plan_id: "76abcf4849334126ab659b597bfafbfe",
+    plan_id: "4197ad220ab74baab1b45318fb73ff4a",
     details: [
       {
         title: "Orientação Saúde + Telemedicina",

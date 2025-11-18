@@ -20,7 +20,7 @@ interface CheckoutFormMultiStepProps {
 export function CheckoutFormMultiStep({ initialPlanId, initialType }: CheckoutFormMultiStepProps) {
   const selectedPlan = plans.find((p) => p.plan_id === initialPlanId) || plans[0]
   const [currentStep, setCurrentStep] = useState(1)
-  const totalSteps = 4 // Reduzido de 6 para 4 etapas (removidas endereço e banco)
+  const totalSteps = 3 // Reduzido de 6 para 4 etapas (removidas endereço e banco)
 
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
