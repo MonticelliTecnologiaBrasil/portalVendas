@@ -20,13 +20,13 @@ interface CheckoutFormMultiStepProps {
 export function CheckoutFormMultiStep({ initialPlanId, initialType }: CheckoutFormMultiStepProps) {
   const selectedPlan = plans.find((p) => p.plan_id === initialPlanId) || plans[0]
   const [currentStep, setCurrentStep] = useState(1)
-  const totalSteps = 3 // Reduzido de 6 para 4 etapas (removidas endereço e banco)
+  const totalSteps = 3
 
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
   const [personalInfo, setPersonalInfo] = useState({
-    cpf: "", // Adicionado CPF aos dados pessoais
+    cpf: "",
     name: "",
     email: "",
     phone: "",
@@ -68,7 +68,22 @@ export function CheckoutFormMultiStep({ initialPlanId, initialType }: CheckoutFo
     return Object.keys(newErrors).length === 0
   }
 
-  const handleNext = () => {
+  const handleNext = async () => {
+    if (currentStep == 1) {
+      const bodyData = {
+        nome: personalInfo.name,
+        cpf: personalInfo.cpf,
+        telefone: personalInfo.phone,
+        email: personalInfo.email
+      }
+
+      await fetch("/api/insere-cliente", {
+        method: 'POST',
+        body: JSON.stringify(bodyData)
+      })
+    }
+
+
     if (validateStep(currentStep)) {
       setCurrentStep((prev) => Math.min(prev + 1, totalSteps))
       setError(null)
@@ -236,7 +251,7 @@ export function CheckoutFormMultiStep({ initialPlanId, initialType }: CheckoutFo
               </Button>
             )}
           </div>
-          
+
           <div className="flex gap-3 items-center justify-center">
             <p className="text-xs text-muted-foreground text-center">
               Seus dados estão protegidos e será criada uma assinatura segura via

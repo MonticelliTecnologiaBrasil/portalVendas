@@ -141,9 +141,8 @@ export function FAQSection() {
         <Card className="border-0 shadow-lg bg-card/90 backdrop-blur p-8 animate-in fade-in slide-in-from-bottom-2 duration-700 delay-200">
           <Accordion type="single" collapsible className="space-y-4">
             {selectedFaqList.map((faq, index) => (
-              <ScrollAnimation>
+              <ScrollAnimation key={index}>
                 <AccordionItem
-                  key={index}
                   value={`item-${index}`}
                   className="border-0 overflow-hidden rounded-lg bg-muted/30 px-6 py-0 transition-all duration-200 hover:bg-muted/50 data-[state=open]:bg-primary/5"
                 >
