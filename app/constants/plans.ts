@@ -21,7 +21,7 @@ export interface Plan {
 
 export const plans = [
   {
-    id: "2",
+    id: "50",
     name: "Essencial",
     type: "Individual",
     price: 64.9,
@@ -82,7 +82,7 @@ Com a Assistência Funeral Benemed, o beneficiário e sua família contam com ap
     ],
   },
   {
-    id: "20",
+    id: "52",
     name: "Protege",
     type: "Individual",
     price: 84.9,
@@ -146,7 +146,7 @@ Com a Assistência Funeral Benemed, o beneficiário e sua família contam com ap
     ],
   },
   {
-    id: "16",
+    id: "54",
     name: "Premium",
     type: "Individual",
     price: 120.0,
@@ -215,7 +215,7 @@ Com a Assistência Funeral Benemed, o beneficiário e sua família contam com ap
     ],
   },
   {
-    id: "35",
+    id: "51",
     name: "Essencial",
     type: "Familiar",
     price: 104.9,
@@ -274,7 +274,7 @@ Com a Assistência Funeral Benemed, o beneficiário e sua família contam com ap
     ],
   },
   {
-    id: "13",
+    id: "53",
     name: "Protege",
     type: "Familiar",
     popular: true,
@@ -339,7 +339,7 @@ Com a Assistência Funeral Benemed, o beneficiário e sua família contam com ap
     ],
   },
   {
-    id: "15",
+    id: "55",
     name: "Premium",
     type: "Familiar",
     price: 215.0,

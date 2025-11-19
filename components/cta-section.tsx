@@ -26,7 +26,7 @@ interface PlanCard {
 
 const plans: PlanCard[] = [
   {
-    id: "28",
+    id: "56",
     name: "Essencial Saúde Mental",
     type: "Individual",
     price: 99.0,
@@ -73,7 +73,7 @@ const plans: PlanCard[] = [
     ]
   },
   {
-    id: "30",
+    id: "58",
     name: "Premium Saúde Mental",
     type: "Individual",
     price: 199.0,
@@ -130,7 +130,7 @@ const plans: PlanCard[] = [
     ]
   },
   {
-    id: "29",
+    id: "57",
     name: "Essencial Saúde Mental",
     type: "Familiar",
     price: 198.0,
@@ -181,7 +181,7 @@ const plans: PlanCard[] = [
     ]
   },
   {
-    id: "31",
+    id: "59",
     name: "Premium Saúde Mental",
     type: "Familiar",
     plan_id: "b2a6a9085d0c436eaea884bcf6d76a50",

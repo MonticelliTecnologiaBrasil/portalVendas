@@ -68,7 +68,7 @@ export function PlansCatalog() {
 
           {/* Familiar */}
           <TabsContent value="familiar">
-            <div className="sm:hidden w-full grid place-items-center pb-8 text-center px-4">
+            <div className="w-full grid place-items-center pb-8 text-center px-4">
               <span className="font-bold text-sm sm:text-base text-slate-500">
                 (CPF do titular + 3 dependentes sem comprovação de vínculo familiar)
               </span>
