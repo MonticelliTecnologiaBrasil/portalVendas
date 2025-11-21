@@ -3,30 +3,42 @@
 import { Button } from "@/components/ui/button"
 import { CONTACT_MESSAGE, WPP_NUMBER } from "@/contants/whatsapp"
 import BenemedLogoColorido from "@/public/logo-benemed-colorido.svg"
+import masterCardLogo from "@/public/surpreenda/mclogo-for-footer.svg"
 import { ArrowUpRight, Instagram, Linkedin } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { WhatsAppFloat } from "./whatsapp"
 
 // Tipagem opcional para manter consistência
-export interface FooterProps {}
+export interface FooterProps { }
 
-export function Footer({}: FooterProps) {
+export function Footer({ }: FooterProps) {
   return (
     <>
       <footer className="bg-card border-t pt-14 pb-10">
         <div className="container mx-auto px-4">
-          
+
           {/* Top Section */}
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-10 pb-14 border-b">
 
             {/* Brand */}
             <div className="space-y-4 md:col-span-1">
-              <Image
-                src={BenemedLogoColorido}
-                alt="Logo Benemed"
-                className="w-32 sm:w-36"
-              />
+              <div className="flex gap-2 items-center">
+                <Image
+                  src={BenemedLogoColorido}
+                  alt="Logo Benemed"
+                  className="w-32 sm:w-36"
+                />
+                {window.location.pathname == '/surpreenda' && (
+                  <Image
+                    src={masterCardLogo}
+                    alt="Logo master card"
+                    className="w-18 sm:w-20"
+                  />
+
+                )} 
+             </div>
+
               <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
                 Cuidando da sua saúde com atendimento humano e transparente.
               </p>

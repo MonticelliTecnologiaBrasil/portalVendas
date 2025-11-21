@@ -24,27 +24,29 @@ export function Header() {
   return (
     <>
       {/* Top Banner */}
-      <div className="bg-primary text-primary-foreground p-4 text-center text-sm flex flex-col sm:flex-row sm:justify-center sm:items-center gap-2">
-        <span className="font-medium">Solicite um atendimento personalizado</span>
+      {window.location.pathname !='/surpreenda' && (
+        <div className="bg-primary text-primary-foreground p-4 text-center text-sm flex flex-col sm:flex-row sm:justify-center sm:items-center gap-2">
+          <span className="font-medium">Solicite um atendimento personalizado</span>
 
-        <a
-          href={`https://wa.me/${WPP_NUMBER}?text=${encodeURIComponent(KNOW_MORE)}`}
-          className="text-primary-foreground font-medium bg-secondary py-2 px-4 shadow rounded-lg hover:bg-white hover:text-blue-300 transition-colors"
-          target="_blank"
-        >
-          Saiba mais
-        </a>
-      </div>
+          <a
+            href={`https://wa.me/${WPP_NUMBER}?text=${encodeURIComponent(KNOW_MORE)}`}
+            className="text-primary-foreground font-medium bg-secondary py-2 px-4 shadow rounded-lg hover:bg-white hover:text-blue-300 transition-colors"
+            target="_blank"
+          >
+            Saiba mais
+          </a>
+        </div>
+      )}
+
 
       {/* Header */}
       <header
-        className={`border-b bg-card transition-all duration-300 ${
-          isFixed ? "fixed top-0 left-0 right-0 shadow-md z-50" : ""
-        }`}
+        className={`border-b bg-card transition-all duration-300 ${isFixed ? "fixed top-0 left-0 right-0 shadow-md z-50" : ""
+          }`}
       >
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            
+
             {/* Logo */}
             <Image
               src={BenemedLogoColorido}
@@ -94,16 +96,14 @@ export function Header() {
 
       {/* Mobile Drawer */}
       <div
-        className={`fixed inset-0 bg-black/40 backdrop-blur-sm transition-opacity duration-300 z-50 ${
-          openMenu ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
-        }`}
+        className={`fixed inset-0 bg-black/40 backdrop-blur-sm transition-opacity duration-300 z-50 ${openMenu ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+          }`}
         onClick={() => setOpenMenu(false)}
       />
 
       <aside
-        className={`fixed top-0 right-0 h-full w-72 bg-card shadow-xl z-[60] p-6 flex flex-col gap-6 transition-transform duration-300 ${
-          openMenu ? "translate-x-0" : "translate-x-full"
-        }`}
+        className={`fixed top-0 right-0 h-full w-72 bg-card shadow-xl z-[60] p-6 flex flex-col gap-6 transition-transform duration-300 ${openMenu ? "translate-x-0" : "translate-x-full"
+          }`}
       >
         <div className="flex items-center justify-between">
           <span className="text-lg font-semibold">Menu</span>
