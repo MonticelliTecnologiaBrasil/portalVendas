@@ -1,4 +1,3 @@
-
 export interface Plan {
   id?: string
   name: string
@@ -19,7 +18,7 @@ export interface Plan {
   }[]
 }
 
-export const plans = [
+export const plans: Plan[] = [
   {
     id: "50",
     name: "Essencial",
@@ -409,3 +408,223 @@ Com a Assistência Funeral Benemed, o beneficiário e sua família contam com ap
     ],
   },
 ];
+
+
+export const mentalPlans: Plan[] = [
+  {
+    id: "56",
+    name: "Essencial Saúde Mental",
+    type: "Individual",
+    price: 99.0,
+    highlights: [
+      "Psicologia Online*",
+      "Orientação Saúde + Telemedicina",
+      "Descontos em medicamentos",
+      "Descontos em consultas e exames",
+      "Assistência Residencial",
+      "Acidentes Pessoais R$ 10 mil",
+      "Assistência funeral R$ 5 mil",
+    ],
+    warning: ["* Até cinco atendimentos com psicólogos por mês."],
+    plan_id: "55c44232a5fe446ca5a748d9249640f3",
+    details: [
+      {
+        title: "Psicologia Online",
+        text: "Com a Psicologia Online Benemed, você cuida da mente com atendimento psicológico por vídeo e voz, realizado por profissionais qualificados, no conforto da sua casa. Disponível de segunda a sexta, das 8h às 18h, o serviço tem abrangência nacional e permite até 5 atendimentos mensais por usuário. É possível incluir até 3 dependentes, sem limite de idade. Mais acolhimento, cuidado e equilíbrio emocional, onde e quando você precisar."
+      },
+      {
+        title: "Orientação Saúde + Telemedicina",
+        text: "A Benemed Saúde oferece o serviço de Orientação Saúde + Telemedicina, disponível 24 horas por dia, todos os dias da semana. O atendimento é realizado por profissionais de enfermagem e médicos qualificados, garantindo agilidade e comodidade. O beneficiário pode tirar dúvidas, receber orientações ou ser direcionado a uma consulta por vídeo. O atendimento segue todas as normas da LGPD e do Código de Ética Médica."
+      },
+      {
+        title: "Descontos em medicamentos",
+        text: "A Assistência de Medicamentos Benemed Saúde oferece descontos de até 80% em uma ampla rede de farmácias em todo o país. Basta apresentar documento com foto e CPF ou a carteirinha digital para ter o desconto aplicado automaticamente. *Os percentuais variam conforme farmácia e medicamento."
+      },
+      {
+        title: "Descontos em consultas e exames",
+        text: "Com o Agendamento Saúde Benemed, você tem acesso a consultas, exames, procedimentos médicos, odontológicos e de bem-estar com descontos de até 80% em todo o território nacional, com atendimento ilimitado."
+      },
+      {
+        title: "Assistência Residencial",
+        text: "Para os problemas do dia a dia! • Manutenção e reparos gratuitos • Assistência 24h • Mão de obra e indicação de profissionais • 5 serviços disponíveis • 2 eventos/ano (R$150 para serviços previstos e R$100 para emergenciais)"
+      },
+      {
+        title: "Acidentes Pessoais R$ 10 mil",
+        text: "O Seguro de Acidentes Pessoais Benemed Saúde oferece cobertura de R$ 10.000,00 para morte acidental e invalidez permanente ou parcial, garantindo proteção financeira em casos de imprevistos."
+      },
+      {
+        title: "Assistência funeral R$ 5 mil",
+        text: "A Assistência Funeral Individual Benemed Saúde cobre até R$ 5.000,00 em despesas funerárias, incluindo atendimento psicológico à família, transporte para liberação do corpo e organização completa para funeral, cremação ou sepultamento."
+      }
+    ]
+  },
+  {
+    id: "58",
+    name: "Premium Saúde Mental",
+    type: "Individual",
+    price: 199.0,
+    highlights: [
+      "Psicologia Online*",
+      "Orientação Saúde + Telemedicina",
+      "Descontos em medicamentos",
+      "Descontos em consultas e exames",
+      "Assistência Residencial",
+      "Assistência PET",
+      "Check-up completo",
+      "Acidentes Pessoais R$ 10 mil",
+      "Assistência funeral R$ 5 mil",
+    ],
+    warning: ["* Até cinco atendimentos com psicólogos por mês."],
+    plan_id: "b8587cf2c8ae47fd88c901d3d659ea85",
+    details: [
+      {
+        title: "Psicologia Online",
+        text: "Com a Psicologia Online Benemed, você cuida da mente com atendimento psicológico por vídeo e voz, realizado por profissionais qualificados... (mesmo texto completo)."
+      },
+      {
+        title: "Orientação Saúde + Telemedicina",
+        text: "A Benemed Saúde oferece o serviço de Orientação Saúde + Telemedicina, disponível 24 horas por dia..."
+      },
+      {
+        title: "Descontos em medicamentos",
+        text: "A Assistência de Medicamentos Benemed Saúde oferece descontos de até 80%..."
+      },
+      {
+        title: "Descontos em consultas e exames",
+        text: "Com o Agendamento Saúde Benemed, você tem acesso a consultas e exames com descontos de até 80%..."
+      },
+      {
+        title: "Assistência Residencial",
+        text: "Para os problemas do dia a dia! • Manutenção e reparos gratuitos..."
+      },
+      {
+        title: "Assistência PET",
+        text: "Eles fazem parte da família e merecem todo o cuidado! Com a Assistência Pet Benemed..."
+      },
+      {
+        title: "Check-up completo",
+        text: "O Check-up Completo Benemed Saúde oferece consulta preventiva, exames e retorno sem custo adicional..."
+      },
+      {
+        title: "Acidentes Pessoais R$ 10 mil",
+        text: "O Seguro de Acidentes Pessoais Benemed Saúde oferece cobertura de R$ 10.000,00..."
+      },
+      {
+        title: "Assistência funeral R$ 5 mil",
+        text: "A Assistência Funeral Individual Benemed Saúde cobre até R$ 5.000,00..."
+      }
+    ]
+  },
+  {
+    id: "57",
+    name: "Essencial Saúde Mental",
+    type: "Familiar",
+    price: 198.0,
+    plan_id: "cf202c8d75e54b43a6ca94c7c81621d5",
+    highlights: [
+      "Psicologia Online *",
+      "Orientação Saúde + Telemedicina",
+      "Descontos em medicamentos",
+      "Descontos em consultas e exames",
+      "Assistências Residencial **",
+      "Acidentes Pessoais R$ 10 mil ***",
+      "Assistência funeral R$ 5 mil ***",
+    ],
+    warning: [
+      "* Até cinco atendimentos com psicólogos por mês.",
+      "** Assistência Residencial: Disponível para o titular.",
+      "*** Seguro Acidentes Pessoais e Assistência Funeral: Disponível para o Titular/Segurado.",
+    ],
+    details: [
+      {
+        title: "Psicologia Online",
+        text: "Com a Psicologia Online Benemed, você cuida da mente com atendimento psicológico por vídeo e voz..."
+      },
+      {
+        title: "Orientação Saúde + Telemedicina",
+        text: "A Benemed Saúde oferece o serviço de Orientação Saúde + Telemedicina..."
+      },
+      {
+        title: "Descontos em medicamentos",
+        text: "A Assistência de Medicamentos Benemed Saúde oferece descontos de até 80%..."
+      },
+      {
+        title: "Descontos em consultas e exames",
+        text: "Com o Agendamento Saúde Benemed, você tem acesso a consultas e exames com descontos..."
+      },
+      {
+        title: "Assistência Residencial",
+        text: "Para os problemas do dia a dia! • Manutenção e reparos gratuitos..."
+      },
+      {
+        title: "Acidentes Pessoais R$ 10 mil",
+        text: "O Seguro de Acidentes Pessoais Benemed Saúde oferece cobertura de R$ 10.000,00..."
+      },
+      {
+        title: "Assistência funeral R$ 5 mil",
+        text: "A Assistência Funeral Individual Benemed Saúde cobre até R$ 5.000,00..."
+      }
+    ]
+  },
+  {
+    id: "59",
+    name: "Premium Saúde Mental",
+    type: "Familiar",
+    plan_id: "b2a6a9085d0c436eaea884bcf6d76a50",
+    price: 289.0,
+    highlights: [
+      "Psicologia Online *",
+      "Orientação Saúde + Telemedicina",
+      "Descontos em medicamentos",
+      "Descontos em consultas e exames",
+      "Assistência Residencial **",
+      "Assistência PET **",
+      "Check-up completo",
+      "Acidentes Pessoais R$ 10 mil ***",
+      "Assistência funeral R$ 5 mil ***",
+    ],
+    warning: [
+      "* Até cinco atendimentos com psicólogos por mês.",
+      "** Assistência Pet: Disponível para o PET do Titular/Segurado. Válido para cães e gatos até 8 anos. Um pet por CPF. | Assistência Residencial: Disponível para o titular.",
+      "*** Seguro Acidentes Pessoais e Assistência Funeral: Disponível para o Titular/Segurado.",
+    ],
+    details: [
+      {
+        title: "Psicologia Online",
+        text: "Com a Psicologia Online Benemed, você cuida da mente com atendimento psicológico por vídeo e voz..."
+      },
+      {
+        title: "Orientação Saúde + Telemedicina",
+        text: "A Benemed Saúde oferece o serviço de Orientação Saúde + Telemedicina..."
+      },
+      {
+        title: "Descontos em medicamentos",
+        text: "A Assistência de Medicamentos Benemed Saúde oferece descontos de até 80%..."
+      },
+      {
+        title: "Descontos em consultas e exames",
+        text: "Com o Agendamento Saúde Benemed, você tem acesso a consultas e exames com descontos..."
+      },
+      {
+        title: "Assistência Residencial",
+        text: "Para os problemas do dia a dia! • Manutenção e reparos gratuitos..."
+      },
+      {
+        title: "Assistência PET",
+        text: "Eles fazem parte da família e merecem todo o cuidado! Com a Assistência Pet Benemed..."
+      },
+      {
+        title: "Check-up completo",
+        text: "O Check-up Completo Benemed Saúde oferece consulta preventiva, exames e retorno gratuito..."
+      },
+      {
+        title: "Acidentes Pessoais R$ 10 mil",
+        text: "O Seguro de Acidentes Pessoais Benemed Saúde oferece cobertura de R$ 10.000,00..."
+      },
+      {
+        title: "Assistência funeral R$ 5 mil",
+        text: "A Assistência Funeral Individual Benemed Saúde cobre até R$ 5.000,00..."
+      }
+    ]
+  },
+]

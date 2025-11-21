@@ -2,6 +2,7 @@
 
 import { CONTACT_MESSAGE, KNOW_MORE, WPP_NUMBER } from "@/contants/whatsapp";
 import BenemedLogoColorido from "@/public/logo-benemed-colorido.svg";
+import masterCardLogo from "@/public/surpreenda/mclogo-for-footer.svg";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -26,7 +27,7 @@ export function Header() {
   return (
     <>
       {/* Top Banner */}
-      {pathname !='/surpreenda' && (
+      {pathname != '/surpreenda' && (
         <div className="bg-primary text-primary-foreground p-4 text-center text-sm flex flex-col sm:flex-row sm:justify-center sm:items-center gap-2">
           <span className="font-medium">Solicite um atendimento personalizado</span>
 
@@ -50,11 +51,21 @@ export function Header() {
           <div className="flex items-center justify-between">
 
             {/* Logo */}
-            <Image
-              src={BenemedLogoColorido}
-              alt="Logo benemed"
-              className="w-36 sm:w-40"
-            />
+            <div className="flex gap-2 items-center">
+              <Image
+                src={BenemedLogoColorido}
+                alt="Logo benemed"
+                className="w-36 sm:w-40"
+              />
+              {pathname == '/surpreenda' && (
+                <Image
+                  src={masterCardLogo}
+                  alt="Logo master card"
+                  className="w-18 sm:w-20"
+                />
+
+              )}
+            </div>
 
             {/* Desktop Nav */}
             <nav className="hidden md:flex justify-center items-center gap-8">

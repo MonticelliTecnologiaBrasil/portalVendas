@@ -3,6 +3,7 @@ import { FAQSection } from "@/components/faq-section"
 import { Footer } from "@/components/footer"
 import { Header } from "@/components/header"
 import { PlansCatalog } from "@/components/plans-catalog"
+import { mentalSurprisePlans, surprisePlans } from "../constants/surpreenda-plans"
 import { Hero } from "./components/hero"
 
 export default function HomePage() {
@@ -10,8 +11,8 @@ export default function HomePage() {
     <main className="min-h-screen">
       <Header />
       <Hero />
-      <PlansCatalog />
-      <CTASection />
+      <PlansCatalog plans={surprisePlans} />
+      <CTASection plans={mentalSurprisePlans} />
       <FAQSection />
       <Footer />
     </main>

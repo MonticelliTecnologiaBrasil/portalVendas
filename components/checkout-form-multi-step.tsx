@@ -201,7 +201,7 @@ export function CheckoutFormMultiStep({ initialPlanId, initialType }: CheckoutFo
             <StepReview
               data={{
                 plan: {
-                  id: selectedPlan.id,
+                  id: selectedPlan.id!,
                   name: selectedPlan.name,
                   price: selectedPlan.price,
                 },
