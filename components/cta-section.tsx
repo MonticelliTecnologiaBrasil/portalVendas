@@ -47,7 +47,7 @@ export function CTASection({ plans }: { plans: Plan[] }) {
 
           {/* INDIVIDUAL */}
           <TabsContent value="individual">
-            <div className={`${individualPlans.length < 3 ? "flex justify-center" : "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2"} gap-6 sm:gap-8`}>
+            <div className={`${individualPlans.length < 3 ? "flex flex-col lg:flex-row justify-center" : "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2"} gap-6 sm:gap-8`}>
               {individualPlans.map((plan) => (
                 <PlanCard key={plan.id} plan={plan} />
               ))}
@@ -62,7 +62,7 @@ export function CTASection({ plans }: { plans: Plan[] }) {
               </span>
             </div>
 
-            <div className={`${individualPlans.length < 2 ? "flex justify-center" : "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2"} gap-6 sm:gap-8`}>
+            <div className={`${individualPlans.length < 2 ? "flex flex-col lg:flex-row justify-center" : "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2"} gap-6 sm:gap-8`}>
               {familiarPlans.map((plan) => (
                 <PlanCard key={plan.id} plan={plan} />
               ))}
@@ -81,7 +81,7 @@ function PlanCard({ plan }: { plan: Plan }) {
   return (
     <ScrollAnimation>
       <Card
-        className={`min-w-xl w-full relative p-4 sm:p-6 border-2 hover:shadow-xl transition-all duration-300 bg-card/80 backdrop-blur flex flex-col h-full
+        className={`md:min-w-md lg:min-w-full w-full relative p-4 sm:p-6 border-2 hover:shadow-xl transition-all duration-300 bg-card/80 backdrop-blur flex flex-col h-full
       ${isPremium ? "border-primary shadow-lg" : "border-border hover:border-primary/50"}`}
       >
         {isPremium && (
