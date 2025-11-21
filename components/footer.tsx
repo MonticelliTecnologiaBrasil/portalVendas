@@ -7,12 +7,14 @@ import masterCardLogo from "@/public/surpreenda/mclogo-for-footer.svg"
 import { ArrowUpRight, Instagram, Linkedin } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { WhatsAppFloat } from "./whatsapp"
 
 // Tipagem opcional para manter consistência
 export interface FooterProps { }
 
 export function Footer({ }: FooterProps) {
+  const pathname = usePathname()
   return (
     <>
       <footer className="bg-card border-t pt-14 pb-10">
@@ -29,7 +31,7 @@ export function Footer({ }: FooterProps) {
                   alt="Logo Benemed"
                   className="w-32 sm:w-36"
                 />
-                {window.location.pathname == '/surpreenda' && (
+                {pathname == '/surpreenda' && (
                   <Image
                     src={masterCardLogo}
                     alt="Logo master card"

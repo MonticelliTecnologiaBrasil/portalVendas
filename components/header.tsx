@@ -5,12 +5,14 @@ import BenemedLogoColorido from "@/public/logo-benemed-colorido.svg";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Button } from "./ui/button";
 
 export function Header() {
   const [isFixed, setIsFixed] = useState(false);
   const [openMenu, setOpenMenu] = useState(false);
+  const pathname = usePathname()
 
   useEffect(() => {
     function handleScroll() {
@@ -24,7 +26,7 @@ export function Header() {
   return (
     <>
       {/* Top Banner */}
-      {window.location.pathname !='/surpreenda' && (
+      {pathname !='/surpreenda' && (
         <div className="bg-primary text-primary-foreground p-4 text-center text-sm flex flex-col sm:flex-row sm:justify-center sm:items-center gap-2">
           <span className="font-medium">Solicite um atendimento personalizado</span>
 
